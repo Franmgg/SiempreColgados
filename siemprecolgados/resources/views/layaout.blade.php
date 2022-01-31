@@ -31,14 +31,14 @@
               <span> Inicio</span>
             </a>
             <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link" href="{{ url('/') }}">
+              <a class="navbar-link" >
                 <span class="icon">
                   <i class="fas fa-users"></i>
                 </span>
                 <span> Cliente</span>
               </a>
               <div class="navbar-dropdown">
-                <a class="navbar-item" href="{{ url('/') }}">
+                <a class="navbar-item" href="{{ url('cliente') }}">
                   Enviar Tarea
                 </a>
               </div>
@@ -116,7 +116,7 @@
 
 
 
-      <footer class="footer" style="position:absolute;bottom:0;width:100%;">
+      <footer class="footer" style="position:fixed;bottom:0%;width:100%;">
         <div class="content has-text-centered">
           <p>
             <strong>SiempreColgados</strong> Por <a href="https://github.com/Franmgg">Francisco M. Gómez</a>.<br> Este sitio web usa la licencia:

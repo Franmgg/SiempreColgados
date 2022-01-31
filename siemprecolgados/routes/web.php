@@ -16,11 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('main');
 });
-
-
 Route::any('/login', function () {
     return view('login');
 });
 Route::any('/admin', function () {
     return view('admin');
+});
+Route::any('/cliente', function () {
+    return view('cliente');
 });
