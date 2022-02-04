@@ -24,12 +24,6 @@
         </div> 
         <div id="navMenuColorlight-example" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="{{ url('/') }}">
-              <span class="icon">
-                <i class="fas fa-home"></i>
-              </span>
-              <span> Inicio</span>
-            </a>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link" >
                 <span class="icon">
@@ -44,7 +38,7 @@
               </div>
             </div>
           
-          @if(Request::path() ==  'admin' )
+         
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               <span class="icon">
@@ -53,6 +47,12 @@
               <span>Gestionar</span>
             </a>
             <div class="navbar-dropdown">
+              <a class="navbar-item" href="{{ url('/ListaCliente') }}">
+                <span class="icon">
+                  <i class="fas fa-user-tie"></i>
+                </span>
+                <span>Gestionar Clientes</span>
+              </a>     
               <a class="navbar-item" href="{{ url('/') }}">
                 <span class="icon">
                   <i class="fas fa-user"></i>
@@ -74,13 +74,14 @@
             </div>
           </div>
 
-          @endif
+          
         </div>
         
 
           <div class="navbar-end" >
-            <div class="navbar-item" {{Request::path() ==  '/' ? 'style=display:inline' : 'style=display:none' }}>
+            <div class="navbar-item">
               <div class="field is-grouped">
+                
                 <p class="control">
                   <a class="button is-primary" href="{{ url('/login') }}">
                     <span class="icon">
@@ -91,16 +92,16 @@
                 </p>
               </div>
             </div>
-            <div class="navbar-item" {{Request::path() ==  'admin' ? 'style=display:inline' : 'style=display:none' }}>
+            <div class="navbar-item">
               <div class="field is-grouped">
-                <p class="control">
+                {{-- <p class="control">
                   <a class="button is-dark" href="{{ url('/login') }}">
                     <span class="icon">
                       <i class="fas fa-sign-in-alt"></i>
                     </span>
                     <span>Cerrar Sesion</span>
                   </a>
-                </p>
+                </p> --}}
               </div>
             </div>
           </div>
