@@ -15,8 +15,7 @@ class clienteController extends Controller
     public function index()
     {
        $clientes = clientes::all();
-      // dd($clientes);
-       return view('ListaCliente',compact('clientes'));
+       return view('/clientes/listaCliente',compact('clientes'));
     }
 
     /**
@@ -26,7 +25,7 @@ class clienteController extends Controller
      */
     public function create()
     {
-        //
+        echo "hola";
     }
 
     /**
@@ -37,9 +36,7 @@ class clienteController extends Controller
      */
     public function store(Request $request)
     {
-        clientes::post('id', function () {
-            return 'Aquí procesaremos el formulario'; 
-        })->name('id.store');
+
     }
 
     /**
@@ -83,10 +80,8 @@ class clienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
-        
+    {     
         Clientes::destroy($id);
-        return view('ListaCliente',compact('clientes'));
+        return view('ListaCliente');
     }
 }

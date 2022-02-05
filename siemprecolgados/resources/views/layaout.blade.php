@@ -12,9 +12,7 @@
     <nav class="navbar is-light">
         <div class="navbar-brand">
           <a class="navbar-item" href="{{ url('/') }}">
-            
-              <img src="img/logo.png" alt="Siempre Colgados" width="32" height="32">
-            <b><span style="color:hsl(171, 100%, 41%)" >Siempre</span>Colgados</b>
+            <b><span style="color:hsl(171, 100%, 41%);margin-left:7%" >Siempre</span>Colgados</b>
           </a>
           <div class="navbar-burger" data-target="navMenuColorlight-example">
             <span></span>
@@ -47,7 +45,7 @@
               <span>Gestionar</span>
             </a>
             <div class="navbar-dropdown">
-              <a class="navbar-item" href="{{ url('/ListaCliente') }}">
+              <a class="navbar-item" href="{{ url('/lc') }}">
                 <span class="icon">
                   <i class="fas fa-user-tie"></i>
                 </span>

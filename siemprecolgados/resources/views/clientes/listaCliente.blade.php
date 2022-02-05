@@ -4,7 +4,10 @@
 <div class="columns is-mobile" style="margin-top:2%">
     <div class="column is-1 is-offset-1">
     <div class="box">
+        <form method="POST" action="{{ url("/ac") }}">
+            @csrf
         <button class="button is-primary">añadir</button>    
+        </form>
     </div>
 </div>
     <div class="column is-7 is-offset-1">
@@ -47,10 +50,8 @@
                           
                         </td>
                     </tr>
-                    
-                @endforeach
-        
-        
+                   
+                @endforeach       
         
             </tbody>
         </table>

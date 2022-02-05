@@ -18,15 +18,10 @@ use App\Http\Controllers\clienteController;
 Route::get('/', function () {
     return view('main');
 });
-Route::any('login', function () {
-    return view('login');
+
+
+//ListaCliente CRUD -SHOW
+Route::resource('lc', clienteController::class);
+Route::any('ac', function () {
+    return view('/clientes/crearCliente');
 });
-Route::any('admin', function () {
-    return view('admin');
-});
-
-//Esto es para hacer login
-Route::get('login')->name('login');
-
-
-Route::resource('ListaCliente', clienteController::class);
