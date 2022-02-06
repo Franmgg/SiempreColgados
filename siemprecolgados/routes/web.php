@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CTareas;
 use App\Http\Controllers\clienteController;
 
 /*
@@ -21,7 +20,4 @@ Route::get('/', function () {
 
 
 //ListaCliente CRUD -SHOW
-Route::resource('lc', clienteController::class);
-Route::any('ac', function () {
-    return view('/clientes/crearCliente');
-});
+Route::resource('clientes', clienteController::class);

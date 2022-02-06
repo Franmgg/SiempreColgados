@@ -14,8 +14,9 @@ class clienteController extends Controller
      */
     public function index()
     {
-       $clientes = clientes::all();
-       return view('/clientes/listaCliente',compact('clientes'));
+        return view('clientes.index', [
+            'clientes' => Clientes::orderBy('id', 'desc')->paginate(4)
+        ]);
     }
 
     /**
@@ -25,7 +26,7 @@ class clienteController extends Controller
      */
     public function create()
     {
-        echo "hola";
+        return view('clientes.create');
     }
 
     /**
@@ -47,7 +48,7 @@ class clienteController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('clientes.show');
     }
 
     /**
@@ -82,6 +83,7 @@ class clienteController extends Controller
     public function destroy($id)
     {     
         Clientes::destroy($id);
-        return view('ListaCliente');
+        return redirect()->route('clientes.index')
+        ->with('success', 'Se eliminó correctamente');
     }
 }
