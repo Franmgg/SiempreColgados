@@ -59,7 +59,7 @@ class clienteController extends Controller
      */
     public function show($id)
     {
-        return view('clientes.show');
+        return view('clientes.index');
     }
 
     /**

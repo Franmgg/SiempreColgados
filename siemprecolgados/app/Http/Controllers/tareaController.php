@@ -113,7 +113,7 @@ class tareaController extends Controller
     public function destroy($id)
     {
         Tareas::destroy($id);
-        return redirect()->route('tareaas.index')
+        return redirect()->route('tareas.index')
         ->with('success', 'Se eliminó correctamente');
     }
 }

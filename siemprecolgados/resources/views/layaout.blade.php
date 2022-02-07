@@ -57,7 +57,7 @@
                 </span>
                 <span>Gestionar Usuarios</span>
               </a>     
-              <a class="navbar-item" href="{{ url('/') }}">
+              <a class="navbar-item" href="{{ url('tareas') }}">
                 <span class="icon">
                   <i class="fas fa-tasks"></i>
                 </span>    

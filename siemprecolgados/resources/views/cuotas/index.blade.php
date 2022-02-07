@@ -37,6 +37,7 @@
                                 <td>{{ $cliente->importe }}</td>
                                 <td>{{ $cliente->pais }}</td>
                                 <td>
+
                                     <form action="{{ route('clientes.destroy', $cliente->id) }}" method="Post">
                                         <a class="button is-warning"
                                             href="{{ route('clientes.edit', $cliente->id) }}">Editar</a>

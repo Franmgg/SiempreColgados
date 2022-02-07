@@ -1,47 +1,62 @@
 @extends('layaout')
 @section('cuerpo')
-
-    <div class="columns is-mobile" style="margin-top:2%">
-        <div class="column is-1 is-offset-1">
-            <div class="box">
-                <div class="button is-primary">
-                    <a style="text-decoration: inherit;color: black;" href="{{ route('clientes.create') }}"> <b> Añadir</b></a>
-                </div>
+<div class="columns">
+    <div class="column is-1" style="margin-top:1%;margin-left:1%;margin-bottom:-1%">
+        <div class="box">
+            <div class="button is-primary">
+                <a style="text-decoration: inherit;color: black;" href="{{ route('tareas.create') }}"> <b> Añadir</b></a>
             </div>
         </div>
-        <div class="column is-7 is-offset-1">
+    </div>
+</div>
+
+    <div class="columns is-mobile" >       
+        <div class="column is-full">
 
             <div class="box">
                 <table class="table is-fullwidth is-striped">
                     <thead>
                         <tr>
+                            <th>Cliente_id</th>
                             <th>Nombre</th>
-                            <th>cif</th>
-                            <th>telefono</th>
-                            <th>correo</th>
-                            <th>moneda</th>
-                            <th>importe</th>
-                            <th>Pais</th>
+                            <th>Telefono</th>
+                            <th>Descripcion</th>
+                            <th>Correo</th>
+                            <th>Dirección</th>
+                            <th>Estado</th>
+                            <th>Fecha de Creación</th>
+                            <th>Fecha de Realización</th>
+                            <th>Anotaciones anteriores</th>
+                            <th>Anotaciones posteriores</th>
+                            <th>Fichero</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($clientes as $cliente)
+                        @foreach ($tareas as $tarea)
                             <tr>
-                                <td>{{ $cliente->nombre }}</td>
-                                <td>{{ $cliente->cif }}</td>
-                                <td>{{ $cliente->telefono }}</td>
-                                <td>{{ $cliente->correo }}</td>
-                                <td>{{ $cliente->moneda }}</td>
-                                <td>{{ $cliente->importe }}</td>
-                                <td>{{ $cliente->pais }}</td>
+                                <td>{{ $tarea->cliente_id }}</td>
+                                <td>{{ $tarea->nombre }}</td>
+                                <td>{{ $tarea->telefono }}</td>
+                                <td>{{ $tarea->descripcion }}</td>
+                                <td>{{ $tarea->correo }}</td>
+                                <td>{{ $tarea->dir }}</td>
+                                <td>{{ $tarea->estado }}</td>
+                                <td>{{ $tarea->fecha_crea }}</td>
+                                <td>{{ $tarea->fecha_rea }}</td>
+                                <td>{{ $tarea->anotaciones_anteriores }}</td>
+                                <td>{{ $tarea->anotaciones_posteriores }}</td>
+                                <td>{{ $tarea->fichero }}</td>
                                 <td>
-                                   
-                                  
-                                        <a class="button is-warning" href="{{route('clientes.edit',$cliente->id)}}">Editar</a>
-                                        <a class="button is-danger" href="{{route('clientes.showDelete',$cliente->id)}}">Eliminar</a>
-
-                                        
+                                    <form action="{{ route('tareas.destroy', $tarea->id) }}" method="Post">
+                                        <a class="button is-warning"
+                                            href="{{ route('tareas.edit', $tarea->id) }}">Editar</a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="button is-danger"
+                                            onclick="return confirm('¿Seguro que quieres borrar a {{ $tarea->nombre }} ?')"
+                                            href="{{ route('tareas.destroy', $tarea->id) }}">Eliminar</button>
+                                    </form>
                                 </td>
                             </tr>
 
@@ -51,8 +66,8 @@
                 </table>
                 <nav class="pagination is-small" role="navigation" aria-label="pagination">
                     <ul class="pagination-list">
-                        @for ($i = 1; $i <= $clientes->lastPage(); $i++)
-                            <li><a class="pagination-link @if($clientes->currentPage()==$i)is-current @endif" href="{{ $clientes->url($i) }}">{{ $i }}</a></li>
+                        @for ($i = 1; $i <= $tareas->lastPage(); $i++)
+                            <li><a class="pagination-link @if($tareas->currentPage()==$i)is-current @endif" href="{{ $tareas->url($i) }}">{{ $i }}</a></li>
                         @endfor
                     </ul>
                 </nav>

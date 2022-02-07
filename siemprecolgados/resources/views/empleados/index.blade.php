@@ -5,8 +5,7 @@
         <div class="column is-1 is-offset-1">
             <div class="box">
                 <div class="button is-primary">
-                    <a style="text-decoration: inherit;color: black;" href="{{ route('clientes.create') }}"> <b>
-                            Añadir</b></a>
+                    <a style="text-decoration: inherit;color: black;" href="{{ route('clientes.create') }}"> <b> Añadir</b></a>
                 </div>
             </div>
         </div>
@@ -37,15 +36,12 @@
                                 <td>{{ $cliente->importe }}</td>
                                 <td>{{ $cliente->pais }}</td>
                                 <td>
+                                    <a class="button is-warning" href="{{route('clientes.edit',$cliente->id)}}">Editar</a>
                                     <form action="{{ route('clientes.destroy', $cliente->id) }}" method="Post">
-                                        <a class="button is-warning"
-                                            href="{{ route('clientes.edit', $cliente->id) }}">Editar</a>
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="button is-danger"
-                                            onclick="return confirm('¿Seguro que quieres borrar a {{ $cliente->nombre }} ?')"
-                                            href="{{ route('clientes.destroy', $cliente->id) }}">Eliminar</button>
-                                    </form>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="button is-danger" onclick="return confirm('¿Seguro que quieres borrar a {{$cliente->nombre}} ?')" href="{{route('clientes.destroy',$cliente->id)}}">Eliminar</button>
+                                </form>
                                 </td>
                             </tr>
 
@@ -56,8 +52,7 @@
                 <nav class="pagination is-small" role="navigation" aria-label="pagination">
                     <ul class="pagination-list">
                         @for ($i = 1; $i <= $clientes->lastPage(); $i++)
-                            <li><a class="pagination-link @if ($clientes->currentPage() == $i)is-current @endif"
-                                    href="{{ $clientes->url($i) }}">{{ $i }}</a></li>
+                            <li><a class="pagination-link @if($clientes->currentPage()==$i)is-current @endif" href="{{ $clientes->url($i) }}">{{ $i }}</a></li>
                         @endfor
                     </ul>
                 </nav>
