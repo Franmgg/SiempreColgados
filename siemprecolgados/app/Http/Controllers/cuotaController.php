@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class tareasController extends Controller
+class cuotaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,7 @@ class tareasController extends Controller
      */
     public function index()
     {
-        
-       
+        //
     }
 
     /**

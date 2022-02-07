@@ -36,9 +36,12 @@
                                 <td>{{ $cliente->importe }}</td>
                                 <td>{{ $cliente->pais }}</td>
                                 <td>
-                                    <a class="button is-warning" href="{{route('clientes.edit',$cliente->id)}}">Editar</a>
-                                    <a class="button is-danger" href="{{route('clientes.eliminar',$cliente->id)}}">Eliminar</a>
+                                   
+                                  
+                                        <a class="button is-warning" href="{{route('clientes.edit',$cliente->id)}}">Editar</a>
+                                        <a class="button is-danger" href="{{route('clientes.showDelete',$cliente->id)}}">Eliminar</a>
 
+                                        
                                 </td>
                             </tr>
 

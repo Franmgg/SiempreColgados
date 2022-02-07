@@ -37,7 +37,18 @@ class clienteController extends Controller
      */
     public function store(Request $request)
     {
-
+        $clientes = new Clientes;
+        $clientes->nombre = $request->nombre;
+        $clientes->cif = $request->cif;
+        $clientes->telefono = $request->telefono;
+        $clientes->correo = $request->correo;
+        $clientes->cuenta_corriente = $request->cuenta_corriente;
+        $clientes->pais = $request->pais;
+        $clientes->moneda = $request->telefono;
+        $clientes->importe = 0;
+        $clientes->save();
+        return redirect()->route('clientes.index')
+            ->with('success', 'Añadido con exito!');
     }
 
     /**
@@ -57,9 +68,9 @@ class clienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Clientes $cliente)
     {
-        //
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
@@ -71,9 +82,19 @@ class clienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $clientes = clientes::find($id);
+        $clientes->nombre = $request->nombre;
+        $clientes->cif = $request->cif;
+        $clientes->telefono = $request->telefono;
+        $clientes->correo = $request->correo;
+        $clientes->cuenta_corriente = $request->cuenta_corriente;
+        $clientes->pais = $request->pais;
+        $clientes->moneda = $request->telefono;
+        $clientes->importe = $request->importe;
+        $clientes->save();
+        return redirect()->route('clientes.index')
+            ->with('success', 'Se ha editado satisfactoriamente');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -81,9 +102,9 @@ class clienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {     
+    {
         Clientes::destroy($id);
         return redirect()->route('clientes.index')
-        ->with('success', 'Se eliminó correctamente');
+            ->with('success', 'Se eliminó correctamente');
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\clienteController;
+use App\Http\Controllers\deleteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,15 @@ Route::get('/', function () {
     return view('main');
 });
 
-
-//ListaCliente CRUD -SHOW
+Route::get('cliente/eliminar',deleteController::class)->name('clientes.eliminar');
+//Cliente CRUD -SHOW
 Route::resource('clientes', clienteController::class);
+
+//Tarea CRUD -SHOW
+Route::resource('tareas', clienteController::class);
+
+//Empleado CRUD -SHOW
+Route::resource('empleados', clienteController::class);
+
+//Cuota CRUD -SHOW
+Route::resource('cuotas', clienteController::class);
