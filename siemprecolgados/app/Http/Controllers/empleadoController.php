@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Empleados;
 
 class empleadoController extends Controller
 {
@@ -13,7 +14,9 @@ class empleadoController extends Controller
      */
     public function index()
     {
-        //
+        return view('empleados.index', [
+            'empleados' => Empleados::orderBy('id', 'desc')->paginate(4)
+        ]);
     }
 
     /**
@@ -23,7 +26,7 @@ class empleadoController extends Controller
      */
     public function create()
     {
-        //
+        return view('empleados.create');
     }
 
     /**
@@ -45,7 +48,7 @@ class empleadoController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('empleados.show');
     }
 
     /**
@@ -56,7 +59,7 @@ class empleadoController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('empleados.edit', compact('empleado'));
     }
 
     /**
@@ -68,7 +71,17 @@ class empleadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $empleados = empleados::find($id);
+        $empleados->nombre = $request->nombre;
+        $empleados->password = $request->fecha_emision;
+        $empleados->importe = $request->importe;
+        $empleados->pagada = $request->pagada;
+        $empleados->fecha_pago = $request->fecha_pago;
+        $empleados->notas = $request->notas;
+        $empleados->cliente_id = $request->cliente_id;
+        $empleados->save();
+        return redirect()->route('cuotas.index')
+            ->with('success', 'Se ha editado satisfactoriamente');
     }
 
     /**
@@ -79,6 +92,8 @@ class empleadoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Empleados::destroy($id);
+        return redirect()->route('empleados.index')
+        ->with('success', 'Se eliminó correctamente');
     }
 }
