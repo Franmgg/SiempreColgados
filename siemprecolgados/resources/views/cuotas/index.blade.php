@@ -5,7 +5,7 @@
         <div class="column is-1 is-offset-1">
             <div class="box">
                 <div class="button is-primary">
-                    <a style="text-decoration: inherit;color: black;" href="{{ route('clientes.create') }}"> <b>
+                    <a style="text-decoration: inherit;color: black;" href="{{ route('cuotas.create') }}"> <b>
                             Añadir</b></a>
                 </div>
             </div>
@@ -16,36 +16,35 @@
                 <table class="table is-fullwidth is-striped">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>cif</th>
-                            <th>telefono</th>
-                            <th>correo</th>
-                            <th>moneda</th>
-                            <th>importe</th>
-                            <th>Pais</th>
+                            <th>Concepto</th>
+                            <th>Fecha de emision</th>
+                            <th>Importe</th>
+                            <th>Pagada</th>
+                            <th>Fecha de Pago</th>
+                            <th>Notas</th>
+                            <th>Cliente_id</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($clientes as $cliente)
+                        @foreach ($cuotas as $cuota)
                             <tr>
-                                <td>{{ $cliente->nombre }}</td>
-                                <td>{{ $cliente->cif }}</td>
-                                <td>{{ $cliente->telefono }}</td>
-                                <td>{{ $cliente->correo }}</td>
-                                <td>{{ $cliente->moneda }}</td>
-                                <td>{{ $cliente->importe }}</td>
-                                <td>{{ $cliente->pais }}</td>
+                                <td>{{ $cuota->concepto }}</td>
+                                <td>{{ $cuota->fecha_emision }}</td>
+                                <td>{{ $cuota->importe}}</td>
+                                <td>{{ $cuota->pagada }}</td>
+                                <td>{{ $cuota->fecha_pago }}</td>
+                                <td>{{ $cuota->notas }}</td>
+                                <td>{{ $cuota->cliente_id }}</td>
                                 <td>
-
-                                    <form action="{{ route('clientes.destroy', $cliente->id) }}" method="Post">
+                                    <form action="{{ route('cuotas.destroy', $cuota->id) }}" method="Post">
                                         <a class="button is-warning"
-                                            href="{{ route('clientes.edit', $cliente->id) }}">Editar</a>
+                                            href="{{ route('cuotas.edit', $cuota->id) }}">Editar</a>
                                         @csrf
                                         @method('DELETE')
                                         <button class="button is-danger"
-                                            onclick="return confirm('¿Seguro que quieres borrar a {{ $cliente->nombre }} ?')"
-                                            href="{{ route('clientes.destroy', $cliente->id) }}">Eliminar</button>
+                                            onclick="return confirm('¿Seguro que quieres borrar a {{ $cuota->cliente_id }} con el concepto de {{$cuota->concepto}} ?')"
+                                            href="{{ route('cuotas.destroy', $cuota->id) }}">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>
@@ -56,9 +55,9 @@
                 </table>
                 <nav class="pagination is-small" role="navigation" aria-label="pagination">
                     <ul class="pagination-list">
-                        @for ($i = 1; $i <= $clientes->lastPage(); $i++)
-                            <li><a class="pagination-link @if ($clientes->currentPage() == $i)is-current @endif"
-                                    href="{{ $clientes->url($i) }}">{{ $i }}</a></li>
+                        @for ($i = 1; $i <= $cuotas->lastPage(); $i++)
+                            <li><a class="pagination-link @if ($cuotas->currentPage() == $i)is-current @endif"
+                                    href="{{ $cuotas->url($i) }}">{{ $i }}</a></li>
                         @endfor
                     </ul>
                 </nav>

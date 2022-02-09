@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\clienteController;
+use App\Http\Controllers\cuotaController;
 use App\Http\Controllers\deleteController;
 use App\Http\Controllers\tareaController;
 
@@ -30,4 +31,8 @@ Route::resource('tareas', tareaController::class);
 Route::resource('empleados', clienteController::class);
 
 //Cuota CRUD -SHOW
-Route::resource('cuotas', clienteController::class);
+Route::resource('cuotas', cuotaController::class);
+
+//ClienteForm - Login.
+Route::resource('cliente', clienteController::class);
+

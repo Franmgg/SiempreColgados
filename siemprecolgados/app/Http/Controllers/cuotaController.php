@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cuota;
 use Illuminate\Http\Request;
+use App\Models\Cuotas;
 
 class cuotaController extends Controller
 {
@@ -13,7 +15,9 @@ class cuotaController extends Controller
      */
     public function index()
     {
-        //
+        return view('cuotas.index', [
+            'cuotas' => Cuotas::orderBy('id', 'desc')->paginate(4)
+        ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class cuotaController extends Controller
      */
     public function create()
     {
-        //
+        return view('cuotas.create');
     }
 
     /**
@@ -34,7 +38,17 @@ class cuotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cuotas = new Cuotas;
+        $cuotas->concepto = $request->concepto;
+        $cuotas->fecha_emision = $request->fecha_emision;
+        $cuotas->importe = $request->importe;
+        $cuotas->pagada = $request->pagada;
+        $cuotas->fecha_pago = $request->fecha_pago;
+        $cuotas->notas = $request->notas;
+        $cuotas->cliente_id = $request->cliente_id;
+        $cuotas->save();
+        return redirect()->route('cuotas.index')
+            ->with('success', 'Añadido con exito!');
     }
 
     /**
@@ -45,7 +59,7 @@ class cuotaController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('coutas.show');
     }
 
     /**
@@ -54,9 +68,9 @@ class cuotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Cuotas $cuota)
     {
-        //
+        return view('coutas.edit', compact('cuota'));
     }
 
     /**
@@ -68,7 +82,17 @@ class cuotaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cuotas = Cuotas::find($id);
+        $cuotas->concepto = $request->concepto;
+        $cuotas->fecha_emision = $request->fecha_emision;
+        $cuotas->importe = $request->importe;
+        $cuotas->pagada = $request->pagada;
+        $cuotas->fecha_pago = $request->fecha_pago;
+        $cuotas->notas = $request->notas;
+        $cuotas->cliente_id = $request->cliente_id;
+        $cuotas->save();
+        return redirect()->route('cutoas.index')
+            ->with('success', 'Se ha editado satisfactoriamente');
     }
 
     /**
@@ -79,6 +103,8 @@ class cuotaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Cuotas::destroy($id);
+        return redirect()->route('cuotas.index')
+        ->with('success', 'Se eliminó correctamente');
     }
 }

@@ -45,7 +45,7 @@
               <span>Gestionar</span>
             </a>
             <div class="navbar-dropdown">
-              <a class="navbar-item" href="{{ url('/lc') }}">
+              <a class="navbar-item" href="{{ url('clientes') }}">
                 <span class="icon">
                   <i class="fas fa-user-tie"></i>
                 </span>
@@ -63,7 +63,7 @@
                 </span>    
                 <span>  Gestionar Tareas</span>
               </a>                       
-              <a class="navbar-item" href="{{ url('/') }}">
+              <a class="navbar-item" href="{{ url('cuotas') }}">
                 <span class="icon">
                   <i class="fas fa-file-invoice-dollar"></i>
                 </span>  
