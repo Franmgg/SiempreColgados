@@ -70,7 +70,7 @@ class cuotaController extends Controller
      */
     public function edit(Cuotas $cuota)
     {
-        return view('coutas.edit', compact('cuota'));
+        return view('cuotas.edit', compact('cuota'));
     }
 
     /**
@@ -82,7 +82,7 @@ class cuotaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cuotas = Cuotas::find($id);
+        $cuotas = cuotas::find($id);
         $cuotas->concepto = $request->concepto;
         $cuotas->fecha_emision = $request->fecha_emision;
         $cuotas->importe = $request->importe;
@@ -91,7 +91,7 @@ class cuotaController extends Controller
         $cuotas->notas = $request->notas;
         $cuotas->cliente_id = $request->cliente_id;
         $cuotas->save();
-        return redirect()->route('cutoas.index')
+        return redirect()->route('cuotas.index')
             ->with('success', 'Se ha editado satisfactoriamente');
     }
 
