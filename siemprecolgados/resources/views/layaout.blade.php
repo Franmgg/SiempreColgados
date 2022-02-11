@@ -51,7 +51,7 @@
                 </span>
                 <span>Gestionar Clientes</span>
               </a>     
-              <a class="navbar-item" href="{{ url('/') }}">
+              <a class="navbar-item" href="{{ url('empleados') }}">
                 <span class="icon">
                   <i class="fas fa-user"></i>
                 </span>
@@ -81,7 +81,7 @@
               <div class="field is-grouped">
                 
                 <p class="control">
-                  <a class="button is-primary" href="{{ url('/login') }}">
+                  <a class="button is-primary" href="{{ url('login') }}">
                     <span class="icon">
                       <i class="fas fa-sign-in-alt"></i>
                     </span>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\formClient;
 
 class formClientController extends Controller
 {
@@ -13,7 +14,7 @@ class formClientController extends Controller
      */
     public function index()
     {
-        //
+        return view('formClient.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class formClientController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +35,7 @@ class formClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -45,7 +46,7 @@ class formClientController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,7 +57,7 @@ class formClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -68,7 +69,7 @@ class formClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -79,6 +80,6 @@ class formClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

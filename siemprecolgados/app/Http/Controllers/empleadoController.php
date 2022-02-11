@@ -37,7 +37,18 @@ class empleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $empleados = new Empleados;
+        $empleados->nombre = $request->nombre;
+        $empleados->password = $request->password;
+        $empleados->dni = $request->dni;
+        $empleados->correo = $request->correo;
+        $empleados->telefono = $request->telefono;
+        $empleados->direccion = $request->direccion;
+        $empleados->fecha_alta = $request->fecha_alta;
+        $empleados->tipo = $request->tipo;
+        $empleados->save();
+        return redirect()->route('empleados.index')
+            ->with('success', 'Se ha editado satisfactoriamente');
     }
 
     /**
@@ -57,7 +68,7 @@ class empleadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Empleados $empleado)
     {
         return view('empleados.edit', compact('empleado'));
     }
@@ -73,14 +84,15 @@ class empleadoController extends Controller
     {
         $empleados = empleados::find($id);
         $empleados->nombre = $request->nombre;
-        $empleados->password = $request->fecha_emision;
-        $empleados->importe = $request->importe;
-        $empleados->pagada = $request->pagada;
-        $empleados->fecha_pago = $request->fecha_pago;
-        $empleados->notas = $request->notas;
-        $empleados->cliente_id = $request->cliente_id;
+        $empleados->password = $request->password;
+        $empleados->dni = $request->dni;
+        $empleados->correo = $request->correo;
+        $empleados->telefono = $request->telefono;
+        $empleados->direccion = $request->direccion;
+        $empleados->fecha_alta = $request->fecha_alta;
+        $empleados->tipo = $request->tipo;
         $empleados->save();
-        return redirect()->route('cuotas.index')
+        return redirect()->route('empleados.index')
             ->with('success', 'Se ha editado satisfactoriamente');
     }
 

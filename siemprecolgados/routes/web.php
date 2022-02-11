@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\clienteController;
 use App\Http\Controllers\cuotaController;
-use App\Http\Controllers\deleteController;
+use App\Http\Controllers\empleadoController;
+use App\Http\Controllers\formClientController;
 use App\Http\Controllers\tareaController;
 
 /*
@@ -17,22 +18,21 @@ use App\Http\Controllers\tareaController;
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', function () {return view('main');});
+Route::get('login', function () {return view('login');});
 
-//Cliente CRUD -SHOW
+//Cliente CRUD 
 Route::resource('clientes', clienteController::class);
 
-//Tarea CRUD -SHOW
+//Tarea CRUD 
 Route::resource('tareas', tareaController::class);
 
-//Empleado CRUD -SHOW
-Route::resource('empleados', clienteController::class);
+//Empleado CRUD
+Route::resource('empleados', empleadoController::class);
 
-//Cuota CRUD -SHOW
+//Cuota CRUD 
 Route::resource('cuotas', cuotaController::class);
 
 //ClienteForm - Login.
-Route::resource('cliente', clienteController::class);
+Route::resource('cliente', formClientController::class);
 
