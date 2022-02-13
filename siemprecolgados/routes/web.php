@@ -6,6 +6,8 @@ use App\Http\Controllers\cuotaController;
 use App\Http\Controllers\empleadoController;
 use App\Http\Controllers\formClientController;
 use App\Http\Controllers\tareaController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +20,7 @@ use App\Http\Controllers\tareaController;
 |
 */
 
-Route::get('/', function () {return view('main');});
-Route::get('login', function () {return view('login');});
-
+Route::get('home', function () {return view('main');});
 //Cliente CRUD 
 Route::resource('clientes', clienteController::class);
 
@@ -35,4 +35,17 @@ Route::resource('cuotas', cuotaController::class);
 
 //ClienteForm - Login.
 Route::resource('cliente', formClientController::class);
+
+
+
+Route::get('/login', [App\Http\Controllers\HomeController::class, 'index'])->name('login');
+
+Auth::routes();
+
+Route::group(['middleware' => ['auth']], function() {
+    /**
+    * Logout Route
+    */
+    Route::get('cerrarsesion', [App\Http\Controllers\LogoutController::class, 'perform'])->name('logout.perform');
+ });
 
