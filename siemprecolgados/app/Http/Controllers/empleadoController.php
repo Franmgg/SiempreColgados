@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Empleados;
+use App\Models\User;
 
 class empleadoController extends Controller
 {
@@ -15,7 +15,7 @@ class empleadoController extends Controller
     public function index()
     {
         return view('empleados.index', [
-            'empleados' => Empleados::orderBy('id', 'desc')->paginate(4)
+            'empleados' => User::orderBy('id', 'desc')->paginate(4)
         ]);
     }
 
@@ -37,7 +37,7 @@ class empleadoController extends Controller
      */
     public function store(Request $request)
     {
-        $empleados = new Empleados;
+        $empleados = new User;
         $empleados->nombre = $request->nombre;
         $empleados->password = $request->password;
         $empleados->dni = $request->dni;
@@ -68,7 +68,7 @@ class empleadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Empleados $empleado)
+    public function edit(User $empleado)
     {
         return view('empleados.edit', compact('empleado'));
     }
@@ -82,7 +82,7 @@ class empleadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $empleados = empleados::find($id);
+        $empleados = User::find($id);
         $empleados->nombre = $request->nombre;
         $empleados->password = $request->password;
         $empleados->dni = $request->dni;
@@ -104,7 +104,7 @@ class empleadoController extends Controller
      */
     public function destroy($id)
     {
-        Empleados::destroy($id);
+        User::destroy($id);
         return redirect()->route('empleados.index')
         ->with('success', 'Se eliminó correctamente');
     }

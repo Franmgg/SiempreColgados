@@ -11,15 +11,15 @@ class Correo extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $asunto = 'FMGG TE ENVIA UN CORREO';
+    public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
  
     /**
@@ -29,6 +29,6 @@ class Correo extends Mailable
      */
     public function build()
     {
-        return $this->from(env('MAIL_FROM_ADDRESS'),env('MAIL_FROM_NAME'))->view('mail');
+        return $this->from(env('MAIL_FROM_ADDRESS'),env('MAIL_FROM_NAME'))->view('mail')->with('data', $this->data);;
     }
 }
