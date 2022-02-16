@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\formClient;
+use App\Models\Tareas;
 
-class formClientController extends Controller
+class tareasOpe extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,9 @@ class formClientController extends Controller
      */
     public function index()
     {
-        return view('formClient.index');
+        return view('tareasOpe.index', [
+            'tareas' => Tareas::orderBy('id', 'desc')->paginate(4)
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class formClientController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -35,18 +37,7 @@ class formClientController extends Controller
      */
     public function store(Request $request)
     {
-        $formClient = new formClient;
-        $formClient->nombre = $request->nombre;
-        $formClient->cif = $request->cif;
-        $formClient->pais = $request->pais;
-        $formClient->correo = $request->correo;
-        $formClient->telefono = $request->telefono;
-        $formClient->cuenta_corriente = $request->cuenta_corriente;
-        $formClient->descripcion = $request->descripcion;
-        $formClient->save();
-        return redirect()->route('formClient.index')
-            ->with('success', 'Se ha editado satisfactoriamente');
-        
+        //
     }
 
     /**
@@ -57,7 +48,7 @@ class formClientController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -68,7 +59,7 @@ class formClientController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -80,7 +71,7 @@ class formClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        //
     }
 
     /**
@@ -91,6 +82,6 @@ class formClientController extends Controller
      */
     public function destroy($id)
     {
-        
+        //
     }
 }

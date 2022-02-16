@@ -82,7 +82,7 @@
 
 
 </div>
-
-
-
+@php
+//echo(Auth::user()->privilege)
+@endphp
 @endsection

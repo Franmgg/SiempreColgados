@@ -1,7 +1,10 @@
-@extends('layaout')
-@section('cuerpo')
-
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@yield('title','FMGG-Practica2')</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
 
 <div class="columns is-mobile" style="margin-top:2%">
     <div class="column is-three-fifths is-offset-one-fifth">
@@ -13,23 +16,20 @@
                     <div class="column">
                         <label class="label">Nombre</label>
                         <input type="text" value="" name="nombre" placeholder="Nombre" class="input">
-                        <label class="label">Password</label>
-                        <input type="password" value="" name="password" placeholder="Password" class="input">
-                        <label class="label">DNI</label>
-                        <input type="text" value="" name="dni" placeholder="DNI" class="input"><br>
-                        <label class="label">Tipo</label>
-                        <input type="text" value="" name="tipo" placeholder="Tipo" class="input"><br>
+                        <label class="label">CIF</label>
+                        <input type="cif" value="" name="cif" placeholder="Cif" class="input">
+                        <label class="label">Pais</label>
+                        <input type="text" value="" name="pais" placeholder="Pais" class="input"><br>
                     </div>
                     <div class="column">
                         <label class="label">Correo</label>
                         <input type="email" value="" name="correo" placeholder="Correo" class="input"><br>
                         <label class="label">Telefono</label>
                         <input type="text" value="" name="telefono" placeholder="telefono" class="input"><br>
-                        <label class="label">Direccion</label>
-                        <input type="text" value="" name="direccion" placeholder="direccion" class="input"><br>
-                        <label class="label">Fecha de Alta</label>
-                        <input type="date" value="" name="fecha_alta" placeholder="Fecha de Alta" class="input"><br>
-                        <hr>
+                        <label class="label">Cuenta Corriente</label>
+                        <input type="text" value="" name="cuenta_corriente" placeholder="Cuenta Corriente" class="input"><br>
+                        <label class="label">Descripcion</label>
+                        <textarea name="descripcion" placeholder="Descripcion" class="textarea"></textarea><br>
                         <button type="submit" class="button">Volver</button>
                         <button type="submit" class="button is-primary">Añadir</button>
                     </div>
@@ -39,4 +39,18 @@
     </div>
 
 
-@endsection
+    
+    <footer class="footer" style="position:fixed;bottom:0%;width:100%;">
+        <div class="content has-text-centered">
+            <p>
+                <strong>SiempreColgados</strong> Por <a href="https://github.com/Franmgg">Francisco M. Gómez</a>.<br>
+                Este sitio web usa la licencia:
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. El contenido del sitio web esta bajo
+                licencia <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"> CC BY NC SA 4.0</a>.
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

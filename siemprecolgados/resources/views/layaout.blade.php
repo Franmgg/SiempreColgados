@@ -16,30 +16,25 @@
             <a class="navbar-item" href="{{ url('/') }}">
                 <b><span style="color:hsl(171, 100%, 41%);margin-left:7%">Siempre</span>Colgados</b>
             </a>
-            <div class="navbar-burger" data-target="navMenuColorlight-example">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
         <div id="navMenuColorlight-example" class="navbar-menu">
             <div class="navbar-start">
+  @if(Auth::user()!=null)
+        @if(Auth::user()->privilege=='0')
+               <div class="navbar-item">
+                   <a href="{{ url('tareasOpe') }}">
+                       <span class="icon">
+                           <i class="fas fa-book"></i>
+                       </span>
+                       <span>Completar tareas</span>
+                   </a>
+               </div>
+          @endif  
+          @endif
+          @if(Auth::user()!=null)
+                @if(Auth::user()->privilege=='1')
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        <span class="icon">
-                            <i class="fas fa-users"></i>
-                        </span>
-                        <span> Cliente</span>
-                    </a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item" href="{{ url('cliente') }}">
-                            Enviar Tarea
-                        </a>
-                    </div>
-                </div>
-
-
-                <div class="navbar-item has-dropdown is-hoverable">
+                    
                     <a class="navbar-link">
                         <span class="icon">
                             <i class="fas fa-users"></i>
@@ -47,6 +42,7 @@
                         <span>Gestionar</span>
                     </a>
                     <div class="navbar-dropdown">
+                        
                         <a class="navbar-item" href="{{ url('clientes') }}">
                             <span class="icon">
                                 <i class="fas fa-user-tie"></i>
@@ -71,17 +67,24 @@
                             </span>
                             <span> Gestionar Cuotas</span>
                         </a>
+                       
                     </div>
+                    @endif
+                    @endif
+                   
                 </div>
+            
 
-
+              
             </div>
-
+          
+            
 
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <div class="field is-grouped">
-                        @if (!Auth::user())
+                    <div class="field is-grouped ">
+                        @if(Auth::user()==null)
+                       
                             <p class="control">
                                 <a class="button is-primary" href="{{ url('login') }}">
                                     <span class="icon">
@@ -90,8 +93,9 @@
                                     <span>Entrar</span>
                                 </a>
                             </p>
-                        @endif
-                        @if (Auth::user())
+                            @endif
+                    
+                       @if(Auth::user())
                             <p class="control">
                               <form method="post" action="logout">
                                 <a class="button is-dark" href="{{ url('cerrarsesion') }}">
@@ -100,20 +104,10 @@
                                     </span>
                                     <span>Cerrar Sesión</span>
                                 </a>
+                              </form>
                             </p>
-                        @endif
-                    </div>
-                </div>
-                <div class="navbar-item">
-                    <div class="field is-grouped">
-                        {{-- <p class="control">
-                  <a class="button is-dark" href="{{ url('/login') }}">
-                    <span class="icon">
-                      <i class="fas fa-sign-in-alt"></i>
-                    </span>
-                    <span>Cerrar Sesion</span>
-                  </a>
-                </p> --}}
+                            @endif
+                          
                     </div>
                 </div>
             </div>
@@ -135,7 +129,7 @@
                 <strong>SiempreColgados</strong> Por <a href="https://github.com/Franmgg">Francisco M. Gómez</a>.<br>
                 Este sitio web usa la licencia:
                 <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. El contenido del sitio web esta bajo
-                licencia<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+                licencia <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"> CC BY NC SA 4.0</a>.
             </p>
         </div>
     </footer>
