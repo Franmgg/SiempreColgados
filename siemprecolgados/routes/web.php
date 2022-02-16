@@ -26,7 +26,7 @@ use App\Http\Controllers\tareasOpe;
 // http://127.0.0.1:8000/cliente Vista de cliente para crear avisos! <--- 
 //
 
-
+// SOLO LOS ADMIN
 Route::group(['middleware' => ['admin']], function () {
     
 //Cliente CRUD 
@@ -42,15 +42,19 @@ Route::resource('empleados', empleadoController::class);
 Route::resource('cuotas', cuotaController::class);
 
 });
-Route::group(['middleware' => ['admin','ope']], function () {
-    Route::get('/', function () {return view('main');});
-});
 
+// SOLO LOS OPERADORES
 Route::group(['middleware' => ['ope']], function () {
     Route::resource('tareasOpe', tareasOpe::class);
 });
 
-Route::get('login', [App\Http\Controllers\HomeController::class, 'index'])->name('login');
+// SOLO LOS ADMINS Y OPERADORES
+Route::group(['middleware' => ['both']], function () {
+    Route::get('/', function () {return view('main');});
+});
+
+//TODOS
+Route::get('login', [App\Http\Controllers\HomeController::class, 'index'])->name('login')->middleware("guest");
 
 Auth::routes();
 
