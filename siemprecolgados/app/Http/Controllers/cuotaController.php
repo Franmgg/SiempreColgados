@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cuota;
 use Illuminate\Http\Request;
 use App\Models\Cuotas;
 use App\Models\Clientes;
 use App\Http\Controllers\SendEmailController;
+use App\Http\Controllers\PDFController;
 
 class cuotaController extends Controller
 {
@@ -43,7 +43,7 @@ class cuotaController extends Controller
         $cuotas = new Cuotas;
         $cliente = new Clientes;
         $c=$cliente::find($request->cliente_id);
-        $email = new SendEmailController;
+        $email = new SendEmailController($request);
         $email->sendEmail($c->correo,$request);
         $cuotas->concepto = $request->concepto;
         $cuotas->fecha_emision = $request->fecha_emision;
@@ -65,7 +65,11 @@ class cuotaController extends Controller
      */
     public function show($id)
     {
-        return view('coutas.show');
+        $cuotas = Cuotas::where('cliente_id',$id)->first();
+        $cliente = new Clientes;
+        $c=$cliente::find($id);
+        $pdf=new PDFController;
+        return  $pdf::verPDF($c->correo,$cuotas);
     }
 
     /**

@@ -9,6 +9,20 @@
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
+                <div class="columns">
+                    <div class="column is-one-third" style="margin-left:-15px">
+                        <a href="{{route('login.google')}}" class="button is-primary">Entra con Google</a>
+                    </div>
+                        <div class="column is-one-third" style="margin-left:0px">
+                        <a href="{{route('login.facebook')}}" class="button is-info">Entra con Facebook</a>
+                    </div>
+                        <div class="column is-one-third" style="margin-left:18px">
+                        <a href="{{route('login.github')}}" class="button is-dark">Entra con Github</a>
+                    </div>
+                    
+                </div>
+                <p style="text-align: center"> - OR - </p>
+                <br>
 
                 <div class="field">
                     <label class="label" for="email">{{ __('E-Mail Address') }}</label>

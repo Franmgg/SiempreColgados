@@ -63,7 +63,7 @@ class tareaController extends Controller
      */
     public function show($id)
     {
-        return view('tares.show');
+        return view('tareas.show');
     }
 
     /**

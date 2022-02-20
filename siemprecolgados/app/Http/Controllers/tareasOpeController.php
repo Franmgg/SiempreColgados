@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\formClient;
+use App\Models\Tareas;
 
-class formClientController extends Controller
+class tareasOpeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,9 @@ class formClientController extends Controller
      */
     public function index()
     {
-        return view('formClient.index');
+        return view('tareasOpe.index', [
+            'tareas' => Tareas::orderBy('id', 'desc')->paginate(4)
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class formClientController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -35,18 +37,7 @@ class formClientController extends Controller
      */
     public function store(Request $request)
     {
-        $formClient = new formClient;
-        $formClient->nombre = $request->nombre;
-        $formClient->cif = $request->cif;
-        $formClient->pais = $request->pais;
-        $formClient->correo = $request->correo;
-        $formClient->telefono = $request->telefono;
-        $formClient->cuenta_corriente = $request->cuenta_corriente;
-        $formClient->descripcion = $request->descripcion;
-        $formClient->save();
-        return redirect()->route('formClient.index')
-            ->with('success', 'Se ha editado satisfactoriamente');
-        
+        //
     }
 
     /**
@@ -57,7 +48,7 @@ class formClientController extends Controller
      */
     public function show($id)
     {
-        
+        return view('tareasOpe.show');
     }
 
     /**
@@ -66,9 +57,9 @@ class formClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tareas $tarea)
     {
-        
+        return view('tareasOpe.edit', compact('tarea'));
     }
 
     /**
@@ -80,7 +71,22 @@ class formClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $tareas = tareas::find($id);
+        $tareas->cliente_id = $request->cliente_id;
+        $tareas->nombre = $request->nombre;
+        $tareas->telefono = $request->telefono;
+        $tareas->descripcion = $request->descripcion;
+        $tareas->correo = $request->correo;
+        $tareas->dir = $request->dir;
+        $tareas->estado = $request->estado;
+        $tareas->fecha_crea = $request->fecha_crea;
+        $tareas->fecha_rea = $request->fecha_rea;
+        $tareas->anotaciones_anteriores = $request->anotaciones_anteriores;
+        $tareas->anotaciones_posteriores = $request->anotaciones_posteriores;
+        $tareas->fichero = $request->fichero;
+        $tareas->save();
+        return redirect()->route('tareasOpe.index')
+            ->with('success', 'Se ha editado satisfactoriamente');
     }
 
     /**
@@ -91,6 +97,6 @@ class formClientController extends Controller
      */
     public function destroy($id)
     {
-        
+        //
     }
 }

@@ -1,9 +1,18 @@
 @extends('layaout')
 @section('cuerpo')
-
+<div class="columns">
+    <div class="column is-1" style="margin-top:1%;margin-left:1%;margin-bottom:-1%">
+        <div class="box">
+            <div class="button is-primary">
+                <a style="text-decoration: inherit;color: black;" href="{{ route('tareas.create') }}"> <b> Añadir</b></a>
+            </div>
+        </div>
+    </div>
+</div>
 
     <div class="columns is-mobile" >       
         <div class="column is-full">
+
             <div class="box">
                 <table class="table is-fullwidth is-striped">
                     <thead>
@@ -26,7 +35,7 @@
                     <tbody>
                         @foreach ($tareas as $tarea)
                             <tr>
-                                <td>{{ $tarea->cliente_id}}</td>
+                                <td>{{ $tarea->cliente_id }}</td>
                                 <td>{{ $tarea->nombre }}</td>
                                 <td>{{ $tarea->telefono }}</td>
                                 <td>{{ $tarea->descripcion }}</td>
@@ -39,9 +48,15 @@
                                 <td>{{ $tarea->anotaciones_posteriores }}</td>
                                 <td>{{ $tarea->fichero }}</td>
                                 <td>
+                                    <form action="{{ route('tareas.destroy', $tarea->id) }}" method="Post">
                                         <a class="button is-warning"
-                                            href="{{ route('tareasOpe.edit', $tarea->id) }}" >Editar</a>  
-                                          
+                                            href="{{ route('tareas.edit', $tarea->id) }}">Editar</a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="button is-danger"
+                                            onclick="return confirm('¿Seguro que quieres borrar a {{ $tarea->nombre }} ?')"
+                                            href="{{ route('tareas.destroy', $tarea->id) }}">Eliminar</button>
+                                    </form>
                                 </td>
                             </tr>
 

@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Tareas;
+use App\Models\Clientes;
+use App\Http\Controllers\SendEmailController;
+use App\Http\Controllers\PDFController;
 
-class tareasOpe extends Controller
+use App\Models\Cuotas;
+
+class cuotasE extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +18,8 @@ class tareasOpe extends Controller
      */
     public function index()
     {
-        return view('tareasOpe.index', [
-            'tareas' => Tareas::orderBy('id', 'desc')->paginate(4)
+        return view('cuotas.index', [
+            'cuotas' => Cuotas::orderBy('id', 'desc')->paginate(4)
         ]);
     }
 
@@ -26,7 +30,7 @@ class tareasOpe extends Controller
      */
     public function create()
     {
-        //
+        return view('cuotasE.create');
     }
 
     /**
@@ -37,7 +41,23 @@ class tareasOpe extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cliente = new Clientes;
+        $c = $cliente->all();
+        foreach($c as $clientes){  
+            $cuotas = new Cuotas;
+             $email = new SendEmailController($request);
+             $email->sendEmail($clientes->correo,$request);
+             $cuotas->concepto = $request->concepto;
+             $cuotas->fecha_emision = $request->fecha_emision;
+             $cuotas->importe = $request->importe;
+             $cuotas->pagada = $request->pagada;
+             $cuotas->fecha_pago = $request->fecha_pago;
+             $cuotas->notas = $request->notas;
+             $cuotas->cliente_id = $clientes->id;
+             $cuotas->save();   
+        }
+        return redirect()->route('cuotas.index')
+        ->with('success', 'Añadido con exito!');
     }
 
     /**

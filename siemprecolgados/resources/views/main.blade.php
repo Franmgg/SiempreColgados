@@ -5,20 +5,16 @@
     <div class="card">
         <div class="card-image ">
           <figure class="image is-5by4 ">
-            <img src="img/asc1.jpg" alt="Placeholder image">
+            <a href="avisos">
+            <img src="img/cliente.jpg" alt="Placeholder image">
+          </a>
           </figure>
         </div>
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4">Nuevo Modelo 2022-E</p>
-              <p class="subtitle is-6">Modelo 2022-E | Double cell</p>
+              <p class="title is-4">Avisos de clientes:  <span class="tag is-danger is-medium">{{$number}}</span> </p>
             </div>
-          </div>
-          <div class="content">
-           <p clasS="is-size-8">
-               Este modelo te hará subir y bajar. Tiene ventiladores instalados para evitar olores.
-           </p>
           </div>
         </div>
     </div>
@@ -83,6 +79,6 @@
 
 </div>
 @php
-//echo(Auth::user()->privilege)
+// echo(Auth::user())
 @endphp
 @endsection

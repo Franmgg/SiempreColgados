@@ -3,10 +3,17 @@
 
     <div class="columns is-mobile" style="margin-top:2%">
         <div class="column is-1 is-offset-1">
-            <div class="box">
+            <div class="">
                 <div class="button is-primary">
                     <a style="text-decoration: inherit;color: black;" href="{{ route('cuotas.create') }}"> <b>
                             Añadir</b></a>
+                </div>
+            </div>
+            <br>
+            <div class="">
+                <div class="button is-warning">
+                    <a style="text-decoration: inherit;color: black;" href="{{ route('cuotasE.create') }}"> <b>
+                            Cuotas excepcional</b></a>
                 </div>
             </div>
         </div>
@@ -32,7 +39,7 @@
                                 <td>{{ $cuota->concepto }}</td>
                                 <td>{{ $cuota->fecha_emision }}</td>
                                 <td>{{ $cuota->importe}}</td>
-                                <td>{{ $cuota->pagada }}</td>
+                                <td>@if($cuota->pagada==0)No @else Si @endif</td>
                                 <td>{{ $cuota->fecha_pago }}</td>
                                 <td>{{ $cuota->notas }}</td>
                                 <td>{{ $cuota->cliente_id }}</td>
@@ -40,6 +47,8 @@
                                     <form action="{{ route('cuotas.destroy', $cuota->id) }}" method="Post">
                                         <a class="button is-warning"
                                             href="{{ route('cuotas.edit', $cuota->id) }}">Editar</a>
+                                            <a class="button is-info"
+                                            href="{{ route('cuotas.show', $cuota->cliente_id) }}" target="_blank">Ver PDF</a>
                                         @csrf
                                         @method('DELETE')
                                         <button class="button is-danger"

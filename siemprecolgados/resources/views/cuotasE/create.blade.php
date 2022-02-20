@@ -7,9 +7,9 @@
     <div class="columns is-mobile" style="margin-top:2%">
         <div class="column is-three-fifths is-offset-one-fifth">
             <div class="box">
-                <form action="{{ route('cuotas.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('cuotasE.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <h1 class="title is-3 ">Crear Cutoas</h1>
+                    <h1 class="title is-3 ">Crear Cutoa excepcional</h1>
                     <div class="columns">
                         <div class="column">
                             <label class="label">Concepto</label>
@@ -35,8 +35,6 @@
                             <input type="date" value="" name="fecha_pago" placeholder="Fecha de Pago" class="input"><br>
                             <label class="label">Notas</label>
                             <input type="text" value="" name="notas" placeholder="Notas" class="input"><br>
-                            <label class="label">Cliente_id</label>
-                            <input type="text" value="" name="cliente_id" placeholder="Cliente_id" class="input"><br>
                             <hr>
                             <button type="submit" class="button">Volver</button>
                             <button type="submit" class="button is-primary">Añadir</button>

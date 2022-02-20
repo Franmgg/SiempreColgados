@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class empleadoController extends Controller
 {
@@ -37,16 +38,18 @@ class empleadoController extends Controller
      */
     public function store(Request $request)
     {
-        $empleados = new User;
-        $empleados->nombre = $request->nombre;
-        $empleados->password = $request->password;
-        $empleados->dni = $request->dni;
-        $empleados->correo = $request->correo;
-        $empleados->telefono = $request->telefono;
-        $empleados->direccion = $request->direccion;
-        $empleados->fecha_alta = $request->fecha_alta;
-        $empleados->tipo = $request->tipo;
-        $empleados->save();
+        $data['name']=$request->name;
+        $data['telefono']=$request->telefono;
+        $data['email']=$request->email;
+        $data['password']=$request->password;
+
+            User::create([
+            'name' => $data['name'],
+            'telefono' => $data['telefono'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'privilege'=> 1,
+        ]);
         return redirect()->route('empleados.index')
             ->with('success', 'Se ha editado satisfactoriamente');
     }
@@ -83,14 +86,11 @@ class empleadoController extends Controller
     public function update(Request $request, $id)
     {
         $empleados = User::find($id);
-        $empleados->nombre = $request->nombre;
-        $empleados->password = $request->password;
-        $empleados->dni = $request->dni;
-        $empleados->correo = $request->correo;
+        $empleados->name = $request->name;
+        $empleados->password;
         $empleados->telefono = $request->telefono;
-        $empleados->direccion = $request->direccion;
-        $empleados->fecha_alta = $request->fecha_alta;
-        $empleados->tipo = $request->tipo;
+        $empleados->email = $request->email;
+        $empleados->privilege = $request->privilege;
         $empleados->save();
         return redirect()->route('empleados.index')
             ->with('success', 'Se ha editado satisfactoriamente');

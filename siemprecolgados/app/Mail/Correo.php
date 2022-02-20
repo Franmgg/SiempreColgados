@@ -1,7 +1,7 @@
 <?php
  
 namespace App\Mail;
- 
+use Dompdf\Dompdf;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -20,6 +20,7 @@ class Correo extends Mailable
     public function __construct($data)
     {
         $this->data = $data;
+        $dompdf = new Dompdf();
     }
  
     /**

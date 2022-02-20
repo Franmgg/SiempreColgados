@@ -6,10 +6,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 
+
+@if(session('success'))
+<div class="notification is-warning" style="text-align: center">
+   <b> {{session('success')}} </b>
+</div>
+@endif
+
 <div class="columns is-mobile" style="margin-top:2%">
     <div class="column is-three-fifths is-offset-one-fifth">
         <div class="box">
-            <form action="{{ route('empleados.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('cliente.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <h1 class="title is-3 ">Crear aviso</h1>
                 <div class="columns">
@@ -30,7 +37,6 @@
                         <input type="text" value="" name="cuenta_corriente" placeholder="Cuenta Corriente" class="input"><br>
                         <label class="label">Descripcion</label>
                         <textarea name="descripcion" placeholder="Descripcion" class="textarea"></textarea><br>
-                        <button type="submit" class="button">Volver</button>
                         <button type="submit" class="button is-primary">Añadir</button>
                     </div>
                 </div>

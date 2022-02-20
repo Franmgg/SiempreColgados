@@ -16,12 +16,8 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>cif</th>
                             <th>telefono</th>
                             <th>correo</th>
-                            <th>moneda</th>
-                            <th>importe</th>
-                            <th>Pais</th>
                             <th>Tipo</th>
                             <th>Acciones</th>
                         </tr>
@@ -29,14 +25,12 @@
                     <tbody>
                         @foreach ($empleados as $empleado)
                             <tr>
-                                <td>{{ $empleado->nombre }}</td>
-                                <td>{{ $empleado->password }}</td>
-                                <td>{{ $empleado->dni }}</td>
-                                <td>{{ $empleado->correo }}</td>
+                                <td>{{ $empleado->name }}</td>
                                 <td>{{ $empleado->telefono }}</td>
-                                <td>{{ $empleado->direccion }}</td>
-                                <td>{{ $empleado->fecha_alta }}</td>
-                                <td>{{ $empleado->tipo }}</td>
+                                <td>{{ $empleado->email }}</td>
+                                <td>@if($empleado->privilege=="1")Admin @else Operario @endif</td>
+                                <td>{{ $empleado->created_at }}</td>
+                               
                                 <td>
                                     <a class="button is-warning" href="{{route('empleados.edit',$empleado->id)}}">Editar</a>
                                     <form action="{{ route('empleados.destroy', $empleado->id) }}" method="Post">
