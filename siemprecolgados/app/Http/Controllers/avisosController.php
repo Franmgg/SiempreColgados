@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Tareas;
 use App\Models\formClient;
 
-class avisos extends Controller
+class avisosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -58,9 +58,9 @@ class avisos extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(formClient $tarea)
     {
-        //
+       return view('avisos.edit', compact('tarea'));
     }
 
     /**
@@ -72,7 +72,18 @@ class avisos extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tarea = formClient::find($id);
+        $tarea->nombre = $request->nombre;
+        $tarea->cif=$request->cif;
+        $tarea->pais = $request->pais;
+        $tarea->correo = $request->correo;
+        $tarea->telefono = $request->telefono;
+        $tarea->cuenta_corriente = $request->cuenta_corriente;
+        $tarea->descripcion = $request->descripcion;
+        $tarea->user_id = $request->user_id;
+        $tarea->save();
+        return redirect()->route('avisos.index')
+            ->with('success', 'Se ha editado satisfactoriamente');
     }
 
     /**

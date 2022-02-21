@@ -14,7 +14,7 @@ use App\Http\Controllers\tareasOpeController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\cuotasE;
 use App\Http\Controllers\main;
-use App\Http\Controllers\avisos;
+use App\Http\Controllers\avisosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ Route::group(['middleware' => ['admin']], function () {
 Route::resource('clientes', clienteController::class);
 
 //Avisos CRUD 
-Route::resource('avisos', avisos::class);
+Route::resource('avisos', avisosController::class);
 
 //Tarea CRUD 
 Route::resource('tareas', tareaController::class);

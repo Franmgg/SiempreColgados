@@ -9,7 +9,7 @@
             <div class="box">
                 <form action="{{ route('cuotasE.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <h1 class="title is-3 ">Crear Cutoa excepcional</h1>
+                    <h1 class="title is-3 ">Crear Cuota excepcional</h1>
                     <div class="columns">
                         <div class="column">
                             <label class="label">Concepto</label>
