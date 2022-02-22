@@ -13,7 +13,9 @@ class vueController extends Controller
      */
     public function index()
     {
-        //
+        return view('vue.index', [
+            'cuotas' => Cuotas::orderBy('id', 'desc')->paginate(4)
+        ]);
     }
 
     /**

@@ -1,1 +1,8 @@
-<h1>Hola</h1>
+@extends('layaout')
+@section('cuerpo')
+
+
+
+
+
+@endsection

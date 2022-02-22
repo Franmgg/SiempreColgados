@@ -64,6 +64,7 @@
                         <button type="submit" class="button is-primary">
                             {{ __('Login') }}
                         </button>
+                        <a href="/password/reset" class="button is-light"> ¿Olvidastes la contraseña? </a>
                     </div>
                 </div>
             </form>
