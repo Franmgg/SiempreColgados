@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Clientes;
+use App\Models\Paises;
 
 class clienteController extends Controller
 {
@@ -26,7 +27,9 @@ class clienteController extends Controller
      */
     public function create()
     {
-        return view('clientes.create');
+        return view('clientes.create',[
+            'paises'=>Paises::all()
+        ]);
     }
 
     /**
@@ -44,7 +47,7 @@ class clienteController extends Controller
         $clientes->correo = $request->correo;
         $clientes->cuenta_corriente = $request->cuenta_corriente;
         $clientes->pais = $request->pais;
-        $clientes->moneda = $request->telefono;
+        $clientes->moneda = $request->moneda;
         $clientes->importe = 0;
         $clientes->save();
         return redirect()->route('clientes.index')

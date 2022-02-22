@@ -15,6 +15,7 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\cuotasE;
 use App\Http\Controllers\main;
 use App\Http\Controllers\avisosController;
+use App\Http\Controllers\vueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,8 @@ Route::resource('cuotas', cuotaController::class);
 //CuotaE CRUD 
 Route::resource('cuotasE', cuotasE::class);
 
+//Vue CRUD 
+Route::resource('vue', vueController::class);
 });
 
 // SOLO LOS OPERADORES

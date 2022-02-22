@@ -8,36 +8,26 @@
                 <table class="table is-fullwidth is-striped">
                     <thead>
                         <tr>
-                            <th>Cliente_id</th>
                             <th>Nombre</th>
-                            <th>Telefono</th>
-                            <th>Descripcion</th>
+                            <th>CIF</th>
+                            <th>Pais</th>
                             <th>Correo</th>
-                            <th>Dirección</th>
-                            <th>Estado</th>
-                            <th>Fecha de Creación</th>
-                            <th>Fecha de Realización</th>
-                            <th>Anotaciones anteriores</th>
-                            <th>Anotaciones posteriores</th>
-                            <th>Fichero</th>
-                            <th>Acciones</th>
+                            <th>Telefono</th>
+                            <th>Cuenta corriente</th>
+                            <th>Descripcion</th>
+                            <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($tareas as $tarea)
                             <tr>
-                                <td>{{ $tarea->cliente_id}}</td>
-                                <td>{{ $tarea->nombre }}</td>
-                                <td>{{ $tarea->telefono }}</td>
-                                <td>{{ $tarea->descripcion }}</td>
+                                <td>{{ $tarea->nombre}}</td>
+                                <td>{{ $tarea->cif }}</td>
+                                <td>{{ $tarea->pais }}</td>
                                 <td>{{ $tarea->correo }}</td>
-                                <td>{{ $tarea->dir }}</td>
-                                <td>{{ $tarea->estado }}</td>
-                                <td>{{ $tarea->fecha_crea }}</td>
-                                <td>{{ $tarea->fecha_rea }}</td>
-                                <td>{{ $tarea->anotaciones_anteriores }}</td>
-                                <td>{{ $tarea->anotaciones_posteriores }}</td>
-                                <td>{{ $tarea->fichero }}</td>
+                                <td>{{ $tarea->telefono }}</td>
+                                <td>{{ $tarea->cuenta_corriente }}</td>
+                                <td>{{ $tarea->descripcion }}</td>
                                 <td>
                                         <a class="button is-warning"
                                             href="{{ route('tareasOpe.edit', $tarea->id) }}" >Editar</a>  

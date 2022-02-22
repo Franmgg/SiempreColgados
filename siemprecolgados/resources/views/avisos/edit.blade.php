@@ -28,8 +28,14 @@
                         <input type="text" value="{{ old('cuenta_corriente', $tarea->cuenta_corriente) }}" name="cuenta_corriente" placeholder="Cuenta corriente" class="input">
                         <label class="label">descripcion</label>
                         <input type="text" value="{{ old('descripcion', $tarea->descripcion) }}" name="descripcion" placeholder="Descripcion" class="input"><br>
-                        <label class="label">Operario</label>
-                        <input type="text" value="{{ old('user_id  ', $tarea->user_id) }}" name="user_id" placeholder="Operario" class="input"><br>
+                        <br>
+                        <div class="select">
+                        <select name="user_id" id="user_id">
+                            @foreach ($usuario as $usuarios )
+                                <option value="{{$usuarios->id}}">{{$usuarios->name}}</option>
+                            @endforeach
+                        </select>
+                        </div>
                         <hr>
                         <button type="submit" class="button">Volver</button>
                         <button type="submit" class="button is-primary">Modificar</button>

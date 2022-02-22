@@ -27,9 +27,17 @@
                             <label class="label">Cuenta Corriente</label>
                             <input type="text" value="" name="cuenta_corriente" placeholder="Cuenta Corriente" class="input"><br>
                             <label class="label">Pais</label>
-                            <input type="text" value="" name="pais" placeholder="Pais" class="input"><br>
+                            <select name="pais" id="" class="select">
+                            @foreach ( $paises as $pais )
+                            <option value="{{$pais->iso_moneda}}">{{$pais->nombre}}</option>
+                            @endforeach      
+                            </select><br>
                             <label class="label">Moneda</label>
-                            <input type="text" value="" name="moneda" placeholder="Moneda" class="input"><br>
+                            <select name="moneda" id="" class="select">
+                            @foreach ( $paises as $pais )
+                            <option value="{{$pais->iso_moneda}}">{{$pais->nombre_moneda}}</option>
+                            @endforeach      
+                            </select><br><br>
                             <hr>
                             <button type="submit" class="button">Volver</button>
                             <button type="submit" class="button is-primary">Añadir</button>

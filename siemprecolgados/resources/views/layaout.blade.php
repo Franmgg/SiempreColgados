@@ -7,6 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title','FMGG-Practica2')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .fade{
+            opacity: 0;
+            animation: fade 4.5s;
+        }
+        @keyframes fade{
+            0% {opacity: 0;}
+            50% {opacity: 1;}
+            100% {opacity: 0;}
+        }
+    </style>
+      <link rel="icon" type="image/x-icon" href="/img/logo.png">
 </head>
 
 <body>
@@ -114,7 +126,11 @@
 
         </div>
     </nav>
-
+    @if(session('success'))
+<div class="notification is-warning fade" style="text-align: center">
+   <b> {{session('success')}} </b>
+</div>
+@endif
     @yield('cuerpo')
 
 
@@ -133,6 +149,7 @@
         </div>
     </footer>
 
+    
 </body>
 
 </html>

@@ -30,14 +30,18 @@ class PDFController extends Controller
   
         return redirect('cuota');
     }
-    public static function  verPDF($email,$cuota){
+    public static function  verPDF($c,$cuota){
+ 
+       
+        $json = file_get_contents('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur.json');
+        $data = json_decode($json,true);
     
-    
-        $data["email"] = $email;
+        $data["email"] = $c->correo;
         $data["title"] = "SiempreColgados - FMGG";
         $data["fecha_emision"] = $cuota->fecha_emision;
         $data["concepto"] = $cuota->concepto;
-        $data["importe"] = $cuota->importe;
+        $data["importe"] = $data['eur'][strtolower($c->moneda)]*$cuota->importe;
+        $data["importeiva"] = ($data['eur'][strtolower($c->moneda)]*$cuota->importe)*1.21;
         $data["pagada"] = $cuota->pagada;
         $data["notas"] = $cuota->notas;
 

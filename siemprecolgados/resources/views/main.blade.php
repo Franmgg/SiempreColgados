@@ -23,20 +23,16 @@
     <div class="card">
         <div class="card-image ">
           <figure class="image is-5by4 ">
-            <img src="img/asc3.jpg" alt="Placeholder image">
+            <a href="vue">
+            <img src="img/vue.png" alt="Placeholder image">
+          </a>
           </figure>
         </div>
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4">Modelo 2020-J</p>
-              <p class="subtitle is-6">Modelo 2020-J | Single cell</p>
+              <p class="title is-4" style="text-align: center">Zona Vue</p>
             </div>
-          </div>
-          <div class="content">
-           <p clasS="is-size-8">
-               Simple, bonito y barato. Cumplirá la función que promete incluso mas. Con la instalación de asistente online ayudará en todos los momentos criticos.
-           </p>
           </div>
         </div>
     </div>

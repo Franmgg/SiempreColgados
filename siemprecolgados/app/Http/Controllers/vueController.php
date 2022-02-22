@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Tareas;
-use App\Models\User;
-use App\Models\formClient;
 
-class avisosController extends Controller
+class vueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +13,7 @@ class avisosController extends Controller
      */
     public function index()
     {
-        return view('avisos.index', [
-            'tareas' => formClient::where('user_id', null)
-            ->orderByDesc('id')
-            ->paginate(4)
-        ]);
+        //
     }
 
     /**
@@ -63,9 +56,7 @@ class avisosController extends Controller
      */
     public function edit($id)
     {
-        $tarea=formClient::findOrFail($id);
-        $usuario =User::all()->where('privilege',"0");
-       return view('avisos.edit', compact('tarea','usuario'));
+        //
     }
 
     /**
@@ -77,18 +68,7 @@ class avisosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tarea = formClient::find($id);
-        $tarea->nombre = $request->nombre;
-        $tarea->cif=$request->cif;
-        $tarea->pais = $request->pais;
-        $tarea->correo = $request->correo;
-        $tarea->telefono = $request->telefono;
-        $tarea->cuenta_corriente = $request->cuenta_corriente;
-        $tarea->descripcion = $request->descripcion;
-        $tarea->user_id = $request->user_id;
-        $tarea->save();
-        return redirect()->route('avisos.index')
-            ->with('success', 'Se ha editado satisfactoriamente');
+        //
     }
 
     /**
@@ -99,8 +79,6 @@ class avisosController extends Controller
      */
     public function destroy($id)
     {
-        formClient::destroy($id);
-        return redirect()->route('avisos.index')
-            ->with('success', 'Se eliminó correctamente');
+        //
     }
 }

@@ -16,10 +16,10 @@
     </tr>
     <tr>
         <td>
-            {{$importe}}€
+            {{$importe}}
         </td>
         <td>
-            {{$importe*1.21}}€
+            {{$importeiva}}
         </td>
         <td>
             @if($pagada==0)No @else Si @endif

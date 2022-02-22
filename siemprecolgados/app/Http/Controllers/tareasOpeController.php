@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\formClient;
 use Illuminate\Http\Request;
 use App\Models\Tareas;
+use FormClient as GlobalFormClient;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class tareasOpeController extends Controller
 {
@@ -14,9 +18,13 @@ class tareasOpeController extends Controller
      */
     public function index()
     {
+      
         return view('tareasOpe.index', [
-            'tareas' => Tareas::orderBy('id', 'desc')->paginate(4)
+            'tareas' => formClient::where('id', Auth::id())
+            ->orderByDesc('id')
+            ->paginate(4)
         ]);
+
     }
 
     /**
@@ -26,7 +34,8 @@ class tareasOpeController extends Controller
      */
     public function create()
     {
-        //
+      return redirect("tareasOpe");
+
     }
 
     /**
@@ -57,9 +66,10 @@ class tareasOpeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tareas $tarea)
+    public function edit($id)
     {
-        return view('tareasOpe.edit', compact('tarea'));
+        $tarea=formClient::findOrFail($id);
+       return view('tareasOpe.edit', compact('tarea'));
     }
 
     /**
@@ -71,19 +81,14 @@ class tareasOpeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tareas = tareas::find($id);
-        $tareas->cliente_id = $request->cliente_id;
+        $tareas = formClient::find($id);
         $tareas->nombre = $request->nombre;
-        $tareas->telefono = $request->telefono;
-        $tareas->descripcion = $request->descripcion;
+        $tareas->cif = $request->cif;
+        $tareas->pais = $request->pais;
         $tareas->correo = $request->correo;
-        $tareas->dir = $request->dir;
-        $tareas->estado = $request->estado;
-        $tareas->fecha_crea = $request->fecha_crea;
-        $tareas->fecha_rea = $request->fecha_rea;
-        $tareas->anotaciones_anteriores = $request->anotaciones_anteriores;
-        $tareas->anotaciones_posteriores = $request->anotaciones_posteriores;
-        $tareas->fichero = $request->fichero;
+        $tareas->telefono = $request->telefono;
+        $tareas->cuenta_corriente = $request->cuenta_corriente;
+        $tareas->descripcion = $request->descripcion;
         $tareas->save();
         return redirect()->route('tareasOpe.index')
             ->with('success', 'Se ha editado satisfactoriamente');

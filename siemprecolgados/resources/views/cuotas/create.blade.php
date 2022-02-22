@@ -36,7 +36,11 @@
                             <label class="label">Notas</label>
                             <input type="text" value="" name="notas" placeholder="Notas" class="input"><br>
                             <label class="label">Cliente_id</label>
-                            <input type="text" value="" name="cliente_id" placeholder="Cliente_id" class="input"><br>
+                            <select name="cliente_id" id="cliente_id" class="select">
+                                @foreach ( $clientes as $cliente )
+                                <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+                                @endforeach      
+                                </select><br><br>
                             <hr>
                             <button type="submit" class="button">Volver</button>
                             <button type="submit" class="button is-primary">Añadir</button>

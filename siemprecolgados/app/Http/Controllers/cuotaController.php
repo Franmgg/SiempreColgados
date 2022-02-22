@@ -17,6 +17,10 @@ class cuotaController extends Controller
      */
     public function index()
     {
+
+        // $json = file_get_contents('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur.json');
+        // $data = json_decode($json,true);
+        // echo $data['eur']['usd']*1000;
         return view('cuotas.index', [
             'cuotas' => Cuotas::orderBy('id', 'desc')->paginate(4)
         ]);
@@ -29,7 +33,9 @@ class cuotaController extends Controller
      */
     public function create()
     {
-        return view('cuotas.create');
+        return view('cuotas.create',[
+            'clientes'=>Clientes::all()
+        ]);
     }
 
     /**
@@ -40,6 +46,7 @@ class cuotaController extends Controller
      */
     public function store(Request $request)
     {
+        
         $cuotas = new Cuotas;
         $cliente = new Clientes;
         $c=$cliente::find($request->cliente_id);
@@ -69,7 +76,7 @@ class cuotaController extends Controller
         $cliente = new Clientes;
         $c=$cliente::find($id);
         $pdf=new PDFController;
-        return  $pdf::verPDF($c->correo,$cuotas);
+        return  $pdf::verPDF($c,$cuotas);
     }
 
     /**
