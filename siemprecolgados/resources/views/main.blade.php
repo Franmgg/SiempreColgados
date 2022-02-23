@@ -2,6 +2,7 @@
 @section('cuerpo')
 <div class="columns mt-2 is-align-content-center">
 <div class="column is-one-fifth ml-6">
+  @if(Auth::user()->privilege=='1')
     <div class="card">
         <div class="card-image ">
           <figure class="image is-5by4 ">
@@ -10,6 +11,7 @@
           </a>
           </figure>
         </div>
+     
         <div class="card-content">
           <div class="media">
             <div class="media-content">
@@ -17,7 +19,9 @@
             </div>
           </div>
         </div>
+     
     </div>
+    @endif
 </div>
 <div class="column is-one-fifth ml-6">
     <div class="card">
@@ -38,26 +42,22 @@
     </div>
 </div>
 <div class="column is-one-fifth ml-6">
-    <div class="card">
-        <div class="card-image ">
-          <figure class="image is-5by4 ">
-            <img src="img/asc2.jpg" alt="Placeholder image">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="media">
-            <div class="media-content">
-              <p class="title is-4">Modelo 2021-M</p>
-              <p class="subtitle is-6">Modelo 2021-M | Double cell</p>
-            </div>
-          </div>
-          <div class="content">
-           <p clasS="is-size-8">
-               Este modelo dara un lavado de cara a su empresa dará a entender que su empresa tiene manera y seriedad.
-           </p>
+  <div class="card">
+      <div class="card-image ">
+        <figure class="image is-5by4 ">
+          <a href="pwd">
+          <img src="img/conf.png" alt="Placeholder image">
+        </a>
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4" style="text-align: center">Configuración del Perfil</p>
           </div>
         </div>
-    </div>
+      </div>
+  </div>
 </div>
 <div class="column is-one-fifth ml-6 is-flex  is-align-content-center">
     <div class="card">

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Clientes;
 use App\Models\Paises;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class clienteController extends Controller
 {
@@ -110,4 +112,5 @@ class clienteController extends Controller
         return redirect()->route('clientes.index')
             ->with('success', 'Se eliminó correctamente');
     }
+
 }

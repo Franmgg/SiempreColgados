@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Clientes;
 use Illuminate\Http\Request;
 use App\Models\Tareas;
 use App\Models\User;
@@ -17,7 +18,7 @@ class avisosController extends Controller
     public function index()
     {
         return view('avisos.index', [
-            'tareas' => formClient::where('user_id', null)
+            'tareas' => Tareas::where('user_id', null)
             ->orderByDesc('id')
             ->paginate(4)
         ]);
@@ -63,7 +64,7 @@ class avisosController extends Controller
      */
     public function edit($id)
     {
-        $tarea=formClient::findOrFail($id);
+        $tarea=Tareas::findOrFail($id);
         $usuario =User::all()->where('privilege',"0");
        return view('avisos.edit', compact('tarea','usuario'));
     }
@@ -77,7 +78,8 @@ class avisosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tarea = formClient::find($id);
+
+        $tarea = Tareas::find($id);
         $tarea->nombre = $request->nombre;
         $tarea->cif=$request->cif;
         $tarea->pais = $request->pais;
@@ -99,7 +101,7 @@ class avisosController extends Controller
      */
     public function destroy($id)
     {
-        formClient::destroy($id);
+        Tareas::destroy($id);
         return redirect()->route('avisos.index')
             ->with('success', 'Se eliminó correctamente');
     }

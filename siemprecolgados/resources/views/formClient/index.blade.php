@@ -12,6 +12,11 @@
    <b> {{session('success')}} </b>
 </div>
 @endif
+@if(session('error'))
+<div class="notification is-danger" style="text-align: center">
+   <b> {!! session()->get('error') !!} </b>
+</div>
+@endif
 
 <div class="columns is-mobile" style="margin-top:2%">
     <div class="column is-three-fifths is-offset-one-fifth">

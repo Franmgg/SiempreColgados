@@ -18,9 +18,7 @@ class cuotaController extends Controller
     public function index()
     {
 
-        // $json = file_get_contents('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur.json');
-        // $data = json_decode($json,true);
-        // echo $data['eur']['usd']*1000;
+        
         return view('cuotas.index', [
             'cuotas' => Cuotas::orderBy('id', 'desc')->paginate(4)
         ]);

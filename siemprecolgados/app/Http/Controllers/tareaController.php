@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tareas;
+use App\Models\formClient;
 
 class tareaController extends Controller
 {
@@ -17,6 +18,7 @@ class tareaController extends Controller
         return view('tareas.index', [
             'tareas' => Tareas::orderBy('id', 'desc')->paginate(4)
         ]);
+
     }
 
     /**

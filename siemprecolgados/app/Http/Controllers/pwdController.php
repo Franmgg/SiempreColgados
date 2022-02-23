@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clientes;
 use Illuminate\Http\Request;
-use App\Models\formClient;
-use App\Models\Tareas;
+use App\Models\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
-class clientesController extends Controller
+class pwdController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,7 @@ class clientesController extends Controller
      */
     public function index()
     {
-        return view('formClient.index');
+        return view('pwd.index');
     }
 
     /**
@@ -37,25 +38,7 @@ class clientesController extends Controller
      */
     public function store(Request $request)
     {
-        $checktlf=Clientes::where('telefono',$request->telefono)->get();
-        $checkcif=Clientes::where('cif',$request->cif)->get();
-        if($checktlf->count()==1&&$checkcif->count()==1){
-        
-        //Formulario Tareas cliente;
-        $clientes = new Tareas;
-        $clientes->nombre = $request->nombre;
-        $clientes->cif = $request->cif;
-        $clientes->pais = $request->pais;
-        $clientes->correo = $request->correo;
-        $clientes->telefono = $request->telefono;
-        $clientes->cuenta_corriente = $request->cuenta_corriente;
-        $clientes->descripcion = $request->descripcion;
-        $clientes->save();
-        return redirect()->route('cliente.index')
-            ->withSuccess('Aviso entragado con exito!');
-        }else{
-            return back()->with('error','Hubo error en la creación del aviso');
-        }
+        //
     }
 
     /**
@@ -87,9 +70,16 @@ class clientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        //
+        $clientes = User::find($id);
+        $clientes->password = Hash::make($request->password);
+        $clientes->email = $request->correo;
+        $clientes->save();
+        return redirect()->route('clientes.index')
+            ->with('success', 'Se ha editado satisfactoriamente');
+    
+        
     }
 
     /**

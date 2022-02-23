@@ -16,6 +16,7 @@ use App\Http\Controllers\cuotasE;
 use App\Http\Controllers\main;
 use App\Http\Controllers\avisosController;
 use App\Http\Controllers\vueController;
+use App\Http\Controllers\pwdController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,8 @@ Route::group(['middleware' => ['ope']], function () {
 Route::group(['middleware' => ['both']], function () {
     Route::get('send-pdf', [PDFController::class, 'index']);
     Route::get('/', [App\Http\Controllers\main::class, 'index']);
+    Route::get('clienteConf', [clienteController::class, 'renameshow']);
+    Route::resource('pwd',pwdController::class);
 });
 
 //TODOS

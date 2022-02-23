@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\formClient;
+use App\Models\Tareas;
+
 class main extends Controller
 {
     public function index()
     {
-        $avisos=formClient::where('user_id',null)->get();
+        $avisos=Tareas::where('user_id',null)->get();
         $number=$avisos->count();
         return view('main',['number'=>$number]);
     }
