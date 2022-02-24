@@ -15,8 +15,4 @@ class Clientes extends Model
     {
         return $this->belongsTo(Paises::class,'pais'); 
     }
-    // public function Cuotas()
-    // {
-    //     return $this->belongsTo(Cuotas::class,'cliente_id'); 
-    // }
 }
