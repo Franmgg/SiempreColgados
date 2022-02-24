@@ -43,13 +43,10 @@ class clientesController extends Controller
         $checkcif=Clientes::where('cif',$request->cif)->get();
         $request->validate([
             'nombre' => 'required|min:3|max:255',
-            'telefono' => 'required',
             'descripcion' => 'required',
             'correo' => 'required|email',
-            'telefono' => 'required',
             'pais' => 'required',
             'direccion' => 'required',
-            'cif' => 'required',
             'cuenta_corriente' => 'required'
         ]);
         if($checktlf->count()==1&&$checkcif->count()==1){
@@ -67,7 +64,7 @@ class clientesController extends Controller
         return redirect()->route('cliente.index')
             ->withSuccess('Aviso entragado con exito!');
         }else{
-            return back()->with('error','Hubo error en la creación del aviso')->withInput($request->all());
+            return back()->withInput($request->all());
         }
     }
 

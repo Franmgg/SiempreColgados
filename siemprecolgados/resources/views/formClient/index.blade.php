@@ -12,9 +12,9 @@
    <b> {{session('success')}} </b>
 </div>
 @endif
-@if(session('error'))
+@if(session('errors'))
 <div class="notification is-danger" style="text-align: center">
-   <b> {!! session()->get('error') !!} </b>
+   <b> Hubo un error en la creación del aviso </b>
 </div>
 @endif
 
