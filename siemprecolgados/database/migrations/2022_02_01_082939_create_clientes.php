@@ -20,7 +20,7 @@ class CreateClientes extends Migration
             $table->string('telefono');
             $table->string('correo');
             $table->string('cuenta_corriente');
-            $table->string('pais');
+            $table->string('pais')->nullable();
             $table->string('moneda');
             $table->double('importe',99.00);
             $table->rememberToken();

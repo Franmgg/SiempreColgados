@@ -20,7 +20,8 @@ class tareasOpeController extends Controller
     {
       
         return view('tareasOpe.index', [
-            'tareas' => formClient::where('id', Auth::id())
+            'tareas' => Tareas::where('cliente_id', Auth::id())
+            ->where('terminada',null)
             ->orderByDesc('id')
             ->paginate(4)
         ]);
@@ -68,7 +69,7 @@ class tareasOpeController extends Controller
      */
     public function edit($id)
     {
-        $tarea=formClient::findOrFail($id);
+        $tarea=Tareas::findOrFail($id);
        return view('tareasOpe.edit', compact('tarea'));
     }
 
@@ -81,7 +82,8 @@ class tareasOpeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tareas = formClient::find($id);
+        if($request->has('check'))$check=1;
+        $tareas = Tareas::find($id);
         $tareas->nombre = $request->nombre;
         $tareas->cif = $request->cif;
         $tareas->pais = $request->pais;
@@ -89,6 +91,7 @@ class tareasOpeController extends Controller
         $tareas->telefono = $request->telefono;
         $tareas->cuenta_corriente = $request->cuenta_corriente;
         $tareas->descripcion = $request->descripcion;
+        $tareas->terminada = $check;
         $tareas->save();
         return redirect()->route('tareasOpe.index')
             ->with('success', 'Se ha editado satisfactoriamente');

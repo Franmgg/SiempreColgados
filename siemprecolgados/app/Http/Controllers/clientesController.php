@@ -45,22 +45,23 @@ class clientesController extends Controller
             'nombre' => 'required|min:3|max:255',
             'descripcion' => 'required',
             'correo' => 'required|email',
-            'pais' => 'required',
-            'direccion' => 'required',
             'cuenta_corriente' => 'required'
         ]);
+
+    
         if($checktlf->count()==1&&$checkcif->count()==1){
            
         //Formulario Tareas cliente;
-        $clientes = new Tareas;
-        $clientes->nombre = $request->nombre;
-        $clientes->cif = $request->cif;
-        $clientes->pais = $request->pais;
-        $clientes->correo = $request->correo;
-        $clientes->telefono = $request->telefono;
-        $clientes->cuenta_corriente = $request->cuenta_corriente;
-        $clientes->descripcion = $request->descripcion;
-        $clientes->save();
+        $tareas = new Tareas;
+        $tareas->cliente_id = $checkcif[0]->id;
+        $tareas->nombre = $request->nombre;
+        $tareas->cif = $request->cif;
+        $tareas->pais = $checkcif[0]->pais;
+        $tareas->correo = $request->correo;
+        $tareas->telefono = $request->telefono;
+        $tareas->cuenta_corriente = $request->cuenta_corriente;
+        $tareas->descripcion = $request->descripcion;
+        $tareas->save();
         return redirect()->route('cliente.index')
             ->withSuccess('Aviso entragado con exito!');
         }else{

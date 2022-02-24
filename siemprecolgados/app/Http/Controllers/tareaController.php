@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Clientes;
 use Illuminate\Http\Request;
 use App\Models\Tareas;
 use App\Models\formClient;
@@ -28,7 +29,8 @@ class tareaController extends Controller
      */
     public function create()
     {
-        return view('tareas.create');
+        return view('tareas.create',[
+            'clientes'=>Clientes::get()]);
     }
 
     /**
@@ -39,6 +41,8 @@ class tareaController extends Controller
      */
     public function store(Request $request)
     {
+        //He dejado que pueda poner otro nombre que no sea el cliente por si quiero que sea un empleado de un cliente el 
+        //que hace una petición 
         $tareas = new Tareas;
         $tareas->cliente_id = $request->cliente_id;
         $tareas->nombre = $request->nombre;

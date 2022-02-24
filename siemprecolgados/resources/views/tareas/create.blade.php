@@ -12,8 +12,12 @@
                     <h1 class="title is-3 ">Crear Tarea</h1>
                     <div class="columns">
                         <div class="column">
-                            <label class="label">Cliente_id</label>
-                            <input type="text" value="" name="cliente_id" placeholder="Cliente_id" class="input">
+                            <label class="label">Clientes</label>
+                            <select name="cliente_id" id="" class="select">
+                                @foreach ($clientes as $cliente)
+                                    <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+                                @endforeach
+                            </select>
                             <label class="label">Nombre</label>
                             <input type="text" value="" name="nombre" placeholder="Nombre" class="input">
                             <label class="label">Telefono</label>
@@ -31,9 +35,9 @@
                             <label class="label">Estado</label>
                             <input type="text" value="" name="estado" placeholder="Estado" class="input"><br>
                             <label class="label">Fecha de Creación</label>
-                            <input type="date" value="" name="fecha_crea" placeholder="Fecha de Creación" class="input"><br>
+                            <input type="datetime-local" value="" name="fecha_crea" placeholder="Fecha de Creación" class="input"><br>
                             <label class="label">Fecha de Realización</label>
-                            <input type="date" value="" name="fecha_rea" placeholder="Pais" class="input"><br>
+                            <input type="datetime-local" value="" name="fecha_rea" placeholder="Pais" class="input"><br>
                             <label class="label">Anotaciones anteriores</label>
                             <input type="text" value="" name="anotaciones_anteriores" placeholder="Anotaciones anteriores" class="input"><br>
                             <label class="label">Anotaciones posteriores</label>

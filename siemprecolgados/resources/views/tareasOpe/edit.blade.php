@@ -30,6 +30,10 @@
                     <div class="column">
                         <label class="label">Descripcion</label>
                         <input type="textarea" value="{{ old('descripcion', $tarea->descripcion) }}" name="descripcion" placeholder="Descripción" class="input"><br>
+                       <br>
+                        <label class="checkbox"><h3 class="title is-5">Terminado:</h3>     </label>
+                        <input type="checkbox" value="{{ old('check', $tarea->check) }}" name="check"><br>
+                   
                         <hr>
                         <button type="submit" class="button">Volver</button>
                         <button type="submit" class="button is-primary">Modificar</button>
