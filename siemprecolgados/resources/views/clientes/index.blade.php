@@ -35,7 +35,7 @@
                                 <td>{{ $cliente->correo }}</td>
                                 <td>{{ $cliente->moneda }}</td>
                                 <td>{{ $cliente->importe }}</td>
-                                <td>{{ $cliente->pais }}</td>
+                                <td>{{ $cliente->paises->nombre }}</td>
                                 <td>
                                     <form action="{{ route('clientes.destroy', $cliente->id) }}" method="Post">
                                         <a class="button is-warning"

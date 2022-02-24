@@ -29,7 +29,7 @@
                             <th>Pagada</th>
                             <th>Fecha de Pago</th>
                             <th>Notas</th>
-                            <th>Cliente_id</th>
+                            <th>Nombre de Cliente</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -42,7 +42,7 @@
                                 <td>@if($cuota->pagada==0)No @else Si @endif</td>
                                 <td>{{ $cuota->fecha_pago }}</td>
                                 <td>{{ $cuota->notas }}</td>
-                                <td>{{ $cuota->cliente_id }}</td>
+                                <td>{{ $cuota->cliente->nombre }}</td>
                                 <td>
                                     <form action="{{ route('cuotas.destroy', $cuota->id) }}" method="Post">
                                         <a class="button is-warning"

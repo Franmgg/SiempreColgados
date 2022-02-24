@@ -6,6 +6,7 @@ use App\Models\Clientes;
 use Illuminate\Http\Request;
 use App\Models\formClient;
 use App\Models\Tareas;
+use App\Models\Paises;
 
 class clientesController extends Controller
 {
@@ -16,7 +17,8 @@ class clientesController extends Controller
      */
     public function index()
     {
-        return view('formClient.index');
+        return view('formClient.index',
+        [ 'paises'=>Paises::all()]);
     }
 
     /**
@@ -39,8 +41,19 @@ class clientesController extends Controller
     {
         $checktlf=Clientes::where('telefono',$request->telefono)->get();
         $checkcif=Clientes::where('cif',$request->cif)->get();
+        $request->validate([
+            'nombre' => 'required|min:3|max:255',
+            'telefono' => 'required',
+            'descripcion' => 'required',
+            'correo' => 'required|email',
+            'telefono' => 'required',
+            'pais' => 'required',
+            'direccion' => 'required',
+            'cif' => 'required',
+            'cuenta_corriente' => 'required'
+        ]);
         if($checktlf->count()==1&&$checkcif->count()==1){
-        
+           
         //Formulario Tareas cliente;
         $clientes = new Tareas;
         $clientes->nombre = $request->nombre;
@@ -54,7 +67,7 @@ class clientesController extends Controller
         return redirect()->route('cliente.index')
             ->withSuccess('Aviso entragado con exito!');
         }else{
-            return back()->with('error','Hubo error en la creación del aviso');
+            return back()->with('error','Hubo error en la creación del aviso')->withInput($request->all());
         }
     }
 

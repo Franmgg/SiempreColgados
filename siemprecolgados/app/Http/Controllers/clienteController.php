@@ -30,7 +30,7 @@ class clienteController extends Controller
     public function create()
     {
         return view('clientes.create',[
-            'paises'=>Paises::all()
+            'paises'=>Paises::get()
         ]);
     }
 

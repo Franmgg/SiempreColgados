@@ -27,19 +27,32 @@
                 <div class="columns">
                     <div class="column">
                         <label class="label">Nombre</label>
-                        <input type="text" value="" name="nombre" placeholder="Nombre" class="input">
+                        <input type="text" value="{{old('nombre')}}" name="nombre" placeholder="Nombre" class="input">
+                        @error('nombre')
+                        <span class="tag is-danger is-light">{{$message}}</span>
+                        @enderror
                         <label class="label">CIF</label>
-                        <input type="cif" value="" name="cif" placeholder="Cif" class="input">
-                        <label class="label">Pais</label>
-                        <input type="text" value="" name="pais" placeholder="Pais" class="input"><br>
+                        <input type="cif" value="{{old('cif')}}" name="cif" placeholder="Cif" class="input">
+                        @error('cif')
+                        <span class="tag is-danger is-light">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="column">
                         <label class="label">Correo</label>
-                        <input type="email" value="" name="correo" placeholder="Correo" class="input"><br>
+                        <input type="email" value="{{old('correo')}}" name="correo" placeholder="Correo" class="input"><br>
+                        @error('correo')
+                        <span class="tag is-danger is-light">{{$message}}</span>
+                        @enderror
                         <label class="label">Telefono</label>
-                        <input type="text" value="" name="telefono" placeholder="telefono" class="input"><br>
+                        <input type="text" value="{{old('telefono')}}" name="telefono" placeholder="telefono" class="input"><br>
+                        @error('telefono')
+                        <span class="tag is-danger is-light">{{$message}}</span>
+                        @enderror
                         <label class="label">Cuenta Corriente</label>
-                        <input type="text" value="" name="cuenta_corriente" placeholder="Cuenta Corriente" class="input"><br>
+                        <input type="text" value="{{old('cuenta_corriente')}}" name="cuenta_corriente" placeholder="Cuenta Corriente" class="input"><br>
+                        @error('cuenta_corriente')
+                        <span class="tag is-danger is-light">{{$message}}</span>
+                        @enderror
                         <label class="label">Descripcion</label>
                         <textarea name="descripcion" placeholder="Descripcion" class="textarea"></textarea><br>
                         <button type="submit" class="button is-primary">Añadir</button>

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Cuotas extends Model
 {
     use HasFactory;
+
+    public function Cliente()
+    {
+        return $this->belongsTo(Clientes::class,'cliente_id');   
+    }
 }

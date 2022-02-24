@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Clientes extends Model
 {
-    use HasFactory;
+   use HasFactory;
+    protected $table='clientes';
+    protected $primaryKey = 'id';
+
+    public function Paises()
+    {
+        return $this->belongsTo(Paises::class,'pais'); 
+    }
+    // public function Cuotas()
+    // {
+    //     return $this->belongsTo(Cuotas::class,'cliente_id'); 
+    // }
 }

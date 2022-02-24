@@ -41,7 +41,6 @@
                             <label class="label">Fichero</label>
                             <input type="text" value="" name="fichero" placeholder="fichero" class="input"><br>
                             <hr>
-                            <button type="submit" class="button">Volver</button>
                             <button type="submit" class="button is-primary">Añadir</button>
                         </div>
                     </div>
