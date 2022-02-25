@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Tareas extends Model
 {
     use HasFactory;
+
+    public function Paises()
+    {
+        return $this->belongsTo(Paises::class,'pais'); 
+    }
 }

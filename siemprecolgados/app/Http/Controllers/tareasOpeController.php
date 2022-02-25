@@ -20,7 +20,7 @@ class tareasOpeController extends Controller
     {
       
         return view('tareasOpe.index', [
-            'tareas' => Tareas::where('cliente_id', Auth::id())
+            'tareas' => Tareas::where('user_id', Auth::id())
             ->where('terminada',null)
             ->orderByDesc('id')
             ->paginate(4)
@@ -91,7 +91,7 @@ class tareasOpeController extends Controller
         $tareas->telefono = $request->telefono;
         $tareas->cuenta_corriente = $request->cuenta_corriente;
         $tareas->descripcion = $request->descripcion;
-        $tareas->terminada = $check;
+        $tareas->terminada = $check ?? null;
         $tareas->save();
         return redirect()->route('tareasOpe.index')
             ->with('success', 'Se ha editado satisfactoriamente');
