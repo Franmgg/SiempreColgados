@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clientes;
 use Illuminate\Http\Request;
-use App\Models\formClient;
-use App\Models\Tareas;
-use App\Models\Paises;
+use App\Models\Empleados;
 
-class clientesController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,8 @@ class clientesController extends Controller
      */
     public function index()
     {
-        return view('formClient.index',
-        [ 'paises'=>Paises::all()]);
+        $Empleados = Empleados::all();
+        return view('laraveljs.Empleados', ['Empleados' => $Empleados]);
     }
 
     /**
@@ -39,35 +36,17 @@ class clientesController extends Controller
      */
     public function store(Request $request)
     {
-        $checktlf=Clientes::where('telefono',$request->telefono)->get();
-        $checkcif=Clientes::where('cif',$request->cif)->get();
         $request->validate([
-            'nombre' => 'required|min:3|max:255',
-            'descripcion' => 'required',
-            'correo' => 'required|email',
-            'cuenta_corriente' => 'required'
+            'title'       => 'required|max:255',
+            'description' => 'required',
         ]);
 
-    
-        if($checktlf->count()==1&&$checkcif->count()==1){
-           
-        //Formulario Tareas cliente;
-        $tareas = new Tareas;
-        $tareas->cliente_id = $checkcif[0]->id;
-        $tareas->nombre = $request->nombre;
-        $tareas->cif = $request->cif;
-        $tareas->pais = $checkcif[0]->pais;
-        $tareas->correo = $request->correo;
-        $tareas->fecha_crea = date('Y-m-d H:i:s', time());
-        $tareas->telefono = $request->telefono;
-        $tareas->cuenta_corriente = $request->cuenta_corriente;
-        $tareas->descripcion = $request->descripcion;
-        $tareas->save();
-        return redirect()->route('cliente.index')
-            ->withSuccess('Aviso entragado con exito!');
-        }else{
-            return back()->withInput($request->all());
-        }
+        $Empleados = Empleados::updateOrCreate(['id' => $request->id], [
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
+
+        return response()->json(['code' => 200, 'message' => 'Empleados Created successfully', 'data' => $Empleados], 200);
     }
 
     /**
@@ -78,7 +57,9 @@ class clientesController extends Controller
      */
     public function show($id)
     {
-        //
+        $Empleados = Empleados::find($id);
+
+        return response()->json($Empleados);
     }
 
     /**
@@ -112,6 +93,8 @@ class clientesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Empleados = Empleados::find($id)->delete();
+
+        return response()->json(['success' => 'Empleados Deleted successfully']);
     }
 }

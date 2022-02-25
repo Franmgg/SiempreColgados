@@ -15,7 +15,7 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\cuotasE;
 use App\Http\Controllers\main;
 use App\Http\Controllers\avisosController;
-use App\Http\Controllers\vueController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\pwdController;
 
 /*
@@ -99,3 +99,7 @@ Route::get('login/github/callback', [LoginController::class, 'handleGithubCallba
 //facebook
 Route::get('login/facebook', [App\Http\Controllers\Auth\LoginController::class, 'redirectToFacebook'])->name('login.facebook');
 Route::get('login/facebook/callback', [LoginController::class, 'handleFacebookCallback']);
+
+
+//Ajax crud 
+Route::resource('vue', PostController::class);
