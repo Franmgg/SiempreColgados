@@ -27,7 +27,7 @@
     <div class="card">
         <div class="card-image ">
           <figure class="image is-5by4 ">
-            <a href="vue">
+            <a href="crudjs">
             <img src="img/vue.png" alt="Placeholder image">
           </a>
           </figure>
@@ -35,7 +35,7 @@
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4" style="text-align: center">Zona Vue</p>
+              <p class="title is-4" style="text-align: center">Zona JS</p>
             </div>
           </div>
         </div>

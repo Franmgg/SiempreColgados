@@ -23,7 +23,7 @@
                             <tr>
                                 <td>{{ $tarea->nombre }}</td>
                                 <td>{{ $tarea->cif }}</td>
-                                <td>{{ $tarea->pais }}</td>
+                                <td>{{ $tarea->paises->nombre }}</td>
                                 <td>{{ $tarea->correo }}</td>
                                 <td>{{ $tarea->telefono }}</td>
                                 <td>{{ $tarea->cuenta_corriente }}</td>

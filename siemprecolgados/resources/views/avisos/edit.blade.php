@@ -17,7 +17,7 @@
                         <label class="label">CIF</label>
                         <input type="text" value="{{ old('cif', $tarea->cif) }}" name="cif" placeholder="CIF" class="input">
                         <label class="label">Pais</label>
-                        <input type="text" value="{{ old('pais', $tarea->pais) }}" name="pais" placeholder="Pais" class="input">
+                        <input type="text" value="{{ old('pais', $tarea->paises->nombre) }}" name="pais" placeholder="Pais" class="input">
                         <label class="label">Correo</label>
                         <input type="email" value="{{ old('correo', $tarea->correo) }}" name="correo" placeholder="Correo" class="input">
                     </div>

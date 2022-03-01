@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Empleados extends Model
 {
+
+    protected $fillable = [
+        'id',
+        'nombre',
+        'correo',
+        'dni',
+        'telefono'
+    ];
     use HasFactory;
 }

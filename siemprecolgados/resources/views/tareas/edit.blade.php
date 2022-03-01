@@ -31,9 +31,9 @@
                         <label class="label">Estado</label>
                         <input type="text" value="{{ old('estado', $tarea->estado) }}" name="estado" placeholder="Estado" class="input"><br>
                         <label class="label">Fecha de Creación</label>
-                        <input type="datetime-local" value="{{ old('fecha_crea', $tarea->fecha_crea) }}" name="fecha_crea" placeholder="Fecha de Creación" class="input"><br>
+                        <input type="datetime" value="{{ old('fecha_crea', $tarea->fecha_crea) }}" name="fecha_crea" placeholder="Fecha de Creación" class="input"><br>
                         <label class="label">Fecha de Realización</label>
-                        <input type="datetime-local" value="{{ old('fecha_rea', $tarea->fecha_rea) }}" name="fecha_rea" placeholder="Pais" class="input"><br>
+                        <input type="datetime" value="{{ old('fecha_rea', $tarea->fecha_rea) }}" name="fecha_rea" placeholder="Pais" class="input"><br>
                         <label class="label">Anotaciones anteriores</label>
                         <input type="text" value="{{ old('anotaciones_anteriores', $tarea->anotaciones_anteriores) }}" name="anotaciones_anteriores" placeholder="Anotaciones anteriores" class="input"><br>
                         <label class="label">Anotaciones posteriores</label>

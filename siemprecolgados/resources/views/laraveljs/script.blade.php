@@ -2,24 +2,24 @@
     $('#laravel_crud').DataTable();
 
     function addPost() {
-        $("#post_id").val('');
+        $("#id").val('');
         $('#post-modal').modal('show');
     }
 
     function editPost(event) {
+        
         var id = $(event).data("id");
-        let _url = `/posts/${id}`;
-        $('#titleError').text('');
-        $('#descriptionError').text('');
-
+        let _url = `/crudjs/${id}`;
         $.ajax({
             url: _url,
             type: "GET",
             success: function(response) {
                 if (response) {
-                    $("#post_id").val(response.id);
-                    $("#title").val(response.title);
-                    $("#description").val(response.description);
+                    $("#id").val(response.id);
+                    $("#nombre").val(response.nombre);
+                    $("#correo").val(response.correo);
+                    $("#dni").val(response.dni);
+                    $("#telefono").val(response.telefono);
                     $('#post-modal').modal('show');
                 }
             }
@@ -27,53 +27,54 @@
     }
 
     function createPost() {
-        var title = $('#title').val();
-        var description = $('#description').val();
-        var id = $('#post_id').val();
+        var id = $('#id').val();
+        var nombre = $('#nombre').val();
+        var correo = $('#correo').val();
+        var dni = $('#dni').val();
+        var telefono = $('#telefono').val();
 
-        let _url = `/posts`;
+        let _url = `/crudjs`;
         let _token = $('meta[name="csrf-token"]').attr('content');
 
         $.ajax({
             url: _url,
             type: "POST",
             data: {
-                id: id,
-                title: title,
-                description: description,
+                id:id,
+                nombre:  $('#nombre').val(),
+                correo:$('#correo').val(),
+                dni:$('#dni').val(),
+                telefono: $('#telefono').val(),
                 _token: _token
             },
             success: function(response) {
                 if (response.code == 200) {
                     if (id != "") {
-                        $("#row_" + id + " td:nth-child(2)").html(response.data.title);
-                        $("#row_" + id + " td:nth-child(3)").html(response.data.description);
+                        $("#row_" + id + " td:nth-child(2)").html(response.data.nombre);
+                        $("#row_" + id + " td:nth-child(3)").html(response.data.correo);
                     } else {
-                        $('table tbody').prepend('<tr id="row_' + response.data.id + '"><td>' + response
-                            .data.id + '</td><td>' + response.data.title + '</td><td>' + response.data
-                            .description + '</td><td><a href="javascript:void(0)" data-id="' + response
-                            .data.id +
-                            '" onclick="editPost(event.target)" class="btn btn-info">Edit</a></td><td><a href="javascript:void(0)" data-id="' +
+                        $('table tbody').prepend('<tr id="row_' + response.data.id + '"><td>' + response.data.nombre + '</td><td>' + response.data.dni + '</td><td>' + 
+                        response.data.correo +  '</td><td>' + response.data.telefono + '</td><td>' +'<a href="javascript:void(0)" data-id="' + response.data.id +
+                            '" onclick="editPost(event.target)" class="btn btn-info">Edit</a><a href="javascript:void(0)" data-id="' +
                             response.data.id +
                             '" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td></tr>'
                             );
                     }
-                    $('#title').val('');
-                    $('#description').val('');
+                    $('#nombre').val('');
+                    $('#correo').val('');
 
                     $('#post-modal').modal('hide');
                 }
             },
             error: function(response) {
-                $('#titleError').text(response.responseJSON.errors.title);
-                $('#descriptionError').text(response.responseJSON.errors.description);
+                
             }
         });
     }
 
     function deletePost(event) {
         var id = $(event).data("id");
-        let _url = `/posts/${id}`;
+        let _url = `/crudjs/${id}`;
         let _token = $('meta[name="csrf-token"]').attr('content');
 
         $.ajax({

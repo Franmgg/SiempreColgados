@@ -27,12 +27,12 @@ class SendEmailController extends Controller
 
         $pdf = PDF::loadView('pdf', $data);
 
-         Mail::send('pdf',$data,function($message)use($data,$pdf){
+        Mail::send('mail',$data,function($message)use($data,$pdf){
             $message->to($data["email"],$data['email'])
                     ->subject($data['title'])
                     ->attachData($pdf->output(),"Cuotas.pdf");
          });
-        
+         
           return redirect('cuota');
     }
 }

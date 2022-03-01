@@ -15,7 +15,7 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\cuotasE;
 use App\Http\Controllers\main;
 use App\Http\Controllers\avisosController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\jsController;
 use App\Http\Controllers\pwdController;
 
 /*
@@ -102,4 +102,4 @@ Route::get('login/facebook/callback', [LoginController::class, 'handleFacebookCa
 
 
 //Ajax crud 
-Route::resource('vue', PostController::class);
+Route::resource('crudjs', jsController::class);

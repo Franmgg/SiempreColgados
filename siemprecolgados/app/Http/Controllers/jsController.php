@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Empleados;
 
-class vueController extends Controller
+class jsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class vueController extends Controller
      */
     public function index()
     {
-        return view('vue.index');
+        $Empleados = Empleados::all();
+        return view('laraveljs.Empleados', ['Empleados' => $Empleados]);
     }
 
     /**
@@ -34,7 +36,14 @@ class vueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Empleados = Empleados::updateOrCreate(['id' => $request->id], [
+            'nombre' => $request->nombre,
+            'correo' => $request->correo,
+            'dni' => $request->dni,
+            'telefono' => $request->telefono
+        ]);
+      
+        return response()->json(['code' => 200, 'message' => 'Empleados Created successfully', 'data' => $Empleados], 200);
     }
 
     /**
@@ -45,7 +54,9 @@ class vueController extends Controller
      */
     public function show($id)
     {
-        //
+        $Empleados = Empleados::find($id);
+
+        return response()->json($Empleados);
     }
 
     /**
@@ -79,6 +90,8 @@ class vueController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Empleados = Empleados::find($id)->delete();
+
+        return response()->json(['success' => 'Empleados Deleted successfully']);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\formClient;
+use App\Models\Paises;
 use Illuminate\Http\Request;
 use App\Models\Tareas;
 use FormClient as GlobalFormClient;
@@ -82,11 +83,24 @@ class tareasOpeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'correo' => 'required|email',
+            'pais' => 'required',
+            'cif' => 'required',
+            'telefono' => 'required',
+            'cuenta_corriente' => 'required',
+            'descripcion' => 'required',
+        ]);
+
+
+
         if($request->has('check'))$check=1;
+        $p = Paises::where('nombre',$request->pais)->get();
         $tareas = Tareas::find($id);
         $tareas->nombre = $request->nombre;
         $tareas->cif = $request->cif;
-        $tareas->pais = $request->pais;
+        $tareas->pais = $p[0]->id;
         $tareas->correo = $request->correo;
         $tareas->telefono = $request->telefono;
         $tareas->cuenta_corriente = $request->cuenta_corriente;

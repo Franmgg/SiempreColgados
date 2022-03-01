@@ -72,6 +72,12 @@ class pwdController extends Controller
      */
     public function update(Request $request,$id)
     {
+        $request->validate([
+            'password' => 'required|min:8|max:255',
+            'correo' => 'required|email'
+        ]);
+
+
         $clientes = User::find($id);
         $clientes->password = Hash::make($request->password);
         $clientes->email = $request->correo;

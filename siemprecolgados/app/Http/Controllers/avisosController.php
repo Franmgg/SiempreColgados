@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Tareas;
 use App\Models\User;
 use App\Models\formClient;
+use App\Models\Paises;
 
 class avisosController extends Controller
 {
@@ -80,9 +81,11 @@ class avisosController extends Controller
     {
 
         $tarea = Tareas::find($id);
+        $p = Paises::where('nombre',$request->pais)->get();
+    
         $tarea->nombre = $request->nombre;
         $tarea->cif=$request->cif;
-        $tarea->pais = $request->pais;
+        $tarea->pais = $p[0]->id ;
         $tarea->correo = $request->correo;
         $tarea->telefono = $request->telefono;
         $tarea->cuenta_corriente = $request->cuenta_corriente;

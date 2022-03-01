@@ -1,3 +1,4 @@
+@extends('layaout')
 <!DOCTYPE html>
 <html>
 
@@ -20,17 +21,17 @@
     }
 
 </style>
+@section('cuerpo')
+    
 
 <body>
 
     <div class="container">
-        <h2 style="margin-top: 12px;" class="alert alert-success">Ajax CRUD with Laravel App -
-            <a href="https://www.codingdriver.com" target="_blank">CodingDriver</a>
-        </h2><br>
+        <h1 class="title is-1"style="text-align: center">Empleados con JS</h1>
         <div class="row">
             <div class="col-12 text-right">
-                <a href="javascript:void(0)" class="btn btn-success mb-3" id="create-new-post" onclick="addPost()">Add
-                    Post</a>
+                <a href="javascript:void(0)" class="btn btn-success mb-3" id="create-new-post" onclick="addPost()">Añadir
+                    Empleado</a>
             </div>
         </div>
         <div class="row" style="clear: both;margin-top: 18px;">
@@ -38,22 +39,24 @@
                 <table id="laravel_crud" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th>Nombre</th>
+                            <th>DNI</th>
+                            <th>CORREO</th>
+                            <th>TELEFONO</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($Empleados as $Empleado)
                             <tr id="row_{{ $Empleado->id }}">
-                                <td>{{ $Empleado->id }}</td>
-                                <td>{{ $Empleado->title }}</td>
-                                <td>{{ $Empleado->description }}</td>
-                                <td><a href="javascript:void(0)" data-id="{{ $Empleado->id }}"
-                                        onclick="editPost(event.target)" class="btn btn-info">Edit</a></td>
+                                <td>{{ $Empleado->nombre }}</td>
+                                <td>{{ $Empleado->dni }}</td>
+                                <td>{{ $Empleado->correo }}</td>
+                                <td>{{ $Empleado->telefono }}</td>
+
                                 <td>
+                                    <a href="javascript:void(0)" data-id="{{ $Empleado->id }}"
+                                        onclick="editPost(event.target)" class="btn btn-info">Edit</a>
                                     <a href="javascript:void(0)" data-id="{{ $Empleado->id }}" class="btn btn-danger"
                                         onclick="deletePost(event.target)">Delete</a>
                                 </td>
@@ -64,8 +67,8 @@
             </div>
         </div>
     </div>
-    @include('posts_modal')
-    @include('posts_script')
+    @include('laraveljs/modal')
+    @include('laraveljs/script')
 </body>
-
+@endsection
 </html>
