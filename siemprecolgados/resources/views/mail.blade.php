@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Siempre Colgados</title>
-    
+
 </head>
+
 <body>
-    <h1>Hola, {{$data->concepto}}</h1>
-    <p>{{$data->notas}}</p>
-   A fecha de {{$data->fecha_emision}}. Se le ha creado una cuota mensual de {{$data->importeiva}}.
-   <br> 
-   @include('pdf')
-   <br> 
-   <p>Gracias, nos vemos pronto!</p>
+    <h1>Siempre colgado informa:</h1>
+    <p>Se ha creado una cuota en su cuenta</p>
+    <hr>
+    <p>Toda la información esta adjunta en el correo en forma de pdf</p>
+    <br>
+        @include('pdf')
+    <br>
+    <p>Gracias, nos vemos pronto!</p>
 </body>
+
 </html>

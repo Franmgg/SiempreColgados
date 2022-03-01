@@ -1,4 +1,5 @@
 <script>
+   
     $('#laravel_crud').DataTable();
 
     function addPost() {
@@ -21,6 +22,7 @@
                     $("#dni").val(response.dni);
                     $("#telefono").val(response.telefono);
                     $('#post-modal').modal('show');
+                    ajax.reload()
                 }
             }
         });
@@ -50,8 +52,10 @@
             success: function(response) {
                 if (response.code == 200) {
                     if (id != "") {
-                        $("#row_" + id + " td:nth-child(2)").html(response.data.nombre);
+                        $("#row_" + id + " td:nth-child(1)").html(response.data.nombre);
+                        $("#row_" + id + " td:nth-child(2)").html(response.data.dni);
                         $("#row_" + id + " td:nth-child(3)").html(response.data.correo);
+                        $("#row_" + id + " td:nth-child(4)").html(response.data.telefono);
                     } else {
                         $('table tbody').prepend('<tr id="row_' + response.data.id + '"><td>' + response.data.nombre + '</td><td>' + response.data.dni + '</td><td>' + 
                         response.data.correo +  '</td><td>' + response.data.telefono + '</td><td>' +'<a href="javascript:void(0)" data-id="' + response.data.id +

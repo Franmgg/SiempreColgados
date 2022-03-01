@@ -6,6 +6,7 @@ use App\Models\Clientes;
 use Illuminate\Http\Request;
 use App\Models\Tareas;
 use App\Models\formClient;
+use App\Models\User;
 
 class tareaController extends Controller
 {
@@ -17,7 +18,8 @@ class tareaController extends Controller
     public function index()
     {
         return view('tareas.index', [
-            'tareas' => Tareas::orderBy('id', 'desc')->paginate(4)
+            'tareas' => Tareas::orderBy('id', 'desc')->paginate(4),
+            
         ]);
 
     }
@@ -44,11 +46,14 @@ class tareaController extends Controller
         //He dejado que pueda poner otro nombre que no sea el cliente por si quiero que sea un empleado de un cliente el 
         //que hace una petición 
         $tareas = new Tareas;
+        $p= Clientes::where('id',$request->cliente_id)->get();
         $tareas->cliente_id = $request->cliente_id;
         $tareas->nombre = $request->nombre;
         $tareas->telefono = $request->telefono;
         $tareas->descripcion = $request->descripcion;
         $tareas->correo = $request->correo;
+        $tareas->pais =$p[0]->paises->id;
+        $tareas->cuenta_corriente=$p[0]->cuenta_corriente;
         $tareas->dir = $request->dir;
         $tareas->estado = $request->estado;
         $tareas->fecha_crea = $request->fecha_crea;
@@ -69,6 +74,7 @@ class tareaController extends Controller
      */
     public function show($id)
     {
+      
         return view('tareas.show');
     }
 
@@ -80,7 +86,8 @@ class tareaController extends Controller
      */
     public function edit(Tareas $tarea)
     {
-        return view('tareas.edit', compact('tarea'));
+        $usuario=User::all()->where('privilege',0);
+        return view('tareas.edit', compact('tarea','usuario'));
     }
 
     /**

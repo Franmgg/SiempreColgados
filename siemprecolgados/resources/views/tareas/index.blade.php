@@ -16,8 +16,7 @@
             <div class="box">
                 <table class="table is-fullwidth is-striped">
                     <thead>
-                        <tr>
-                            <th>Cliente_id</th>
+                        <tr>                 
                             <th>Nombre</th>
                             <th>Telefono</th>
                             <th>Descripcion</th>
@@ -35,7 +34,6 @@
                     <tbody>
                         @foreach ($tareas as $tarea)
                             <tr>
-                                <td>{{ $tarea->cliente_id }}</td>
                                 <td>{{ $tarea->nombre }}</td>
                                 <td>{{ $tarea->telefono }}</td>
                                 <td>{{ $tarea->descripcion }}</td>

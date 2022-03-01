@@ -13,7 +13,12 @@
                 <div class="columns">
                     <div class="column">
                         <label class="label">Cliente_id</label>
-                        <input type="text" value="{{ old('cliente_id', $tarea->cliente_id) }}" name="cliente_id" placeholder="Cliente_id" class="input">
+                        <select name="cliente_id" id="cliente_id" class="select">
+                            @foreach ($usuario as $usuarios )
+                            <option value="{{$usuarios->id}}">{{$usuarios->name}} ({{$usuarios->email}})</option>                                
+                            @endforeach
+                        </select>
+                        <br><br>
                         <label class="label">Nombre</label>
                         <input type="text" value="{{ old('nombre', $tarea->nombre) }}" name="nombre" placeholder="Nombre" class="input">
                         <label class="label">Telefono</label>

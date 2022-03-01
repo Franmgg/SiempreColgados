@@ -1,4 +1,4 @@
-@extends('layaout')
+
 <!DOCTYPE html>
 <html>
 
@@ -21,7 +21,7 @@
     }
 
 </style>
-@section('cuerpo')
+
     
 
 <body>
@@ -70,5 +70,5 @@
     @include('laraveljs/modal')
     @include('laraveljs/script')
 </body>
-@endsection
+
 </html>

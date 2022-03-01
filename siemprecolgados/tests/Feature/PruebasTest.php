@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Clientes;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -19,7 +20,7 @@ class PruebasTest extends TestCase
         $response = $this->get('/cliente');
         $response->assertStatus(200);
     }
-   
+   //entramos al login
     public function test_login()
     {
         $response = $this->get('/login');
@@ -31,5 +32,16 @@ class PruebasTest extends TestCase
         $response = $this->get('/avisos');
         $response->assertRedirect('/login');
     }
-    
+    //entramos con adm
+    public function test_entraAdmin()
+    {
+        $adm = User::get()->first();
+        $this->actingAs($adm)->get('/')->assertStatus(200);
+    }
+    //entramos con ope
+    public function test_entraOperario()
+    {
+        $ope = User::get()->skip(1)->first();
+        $this->actingAs($ope)->get('/')->assertStatus(200);
+    }
 }
