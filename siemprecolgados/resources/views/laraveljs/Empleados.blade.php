@@ -24,7 +24,7 @@
     
 
 <body>
-
+<a href="{{URL::previous()}}" class="btn bg-primary" style="margin:0.5%">Volver</a>
     <div class="container">
         <h1 class="title is-1"style="text-align: center">Empleados con JS</h1>
         <div class="row">
