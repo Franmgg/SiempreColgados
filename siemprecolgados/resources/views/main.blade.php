@@ -1,5 +1,18 @@
 @extends('layaout')
 @section('cuerpo')
+@section('joke')
+<table style="text-align: center;background-color:rgba(0, 0, 0, 0.102);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.253);">
+  <thead>
+    <tr>
+      <td ><p style="margin-top: -2px;padding-left:10px;padding-right:10px"><strong>{{$joke['setup']}}</strong></p></td>
+    </tr>
+  </thead>
+  <tbody>
+    <td ><p style="margin-top:-8px;padding-left:10px;padding-right:10px">{{$joke['delivery']}}</p></td>
+  </tbody>
+</table>
+
+@endsection
 <div class="columns mt-2 is-align-content-center">
 <div class="column is-one-fifth ml-6">
   @if(Auth::user()->privilege=='1')
@@ -74,7 +87,5 @@
 
 
 </div>
-@php
-// echo(Auth::user())
-@endphp
+
 @endsection

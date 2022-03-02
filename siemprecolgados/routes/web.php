@@ -54,10 +54,7 @@ Route::resource('cuotas', cuotaController::class);
 //CuotaE CRUD 
 Route::resource('cuotasE', cuotasE::class);
 
-//Vue CRUD 
-Route::resource('vue', vueController::class);
 });
-
 // SOLO LOS OPERADORES
 Route::group(['middleware' => ['ope']], function () {
 
@@ -76,7 +73,6 @@ Route::group(['middleware' => ['both']], function () {
 //TODOS
 Route::get('login', [App\Http\Controllers\HomeController::class, 'index'])->name('login')->middleware("guest");
 
-Auth::routes();
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('cerrarsesion', [App\Http\Controllers\LogoutController::class, 'perform'])->name('logout.perform');
@@ -86,7 +82,8 @@ Route::group(['middleware' => ['auth']], function() {
 Route::get('send', [SendEmailController::class, 'sendEmail']);
 //ClienteForm - Login.
 Route::resource('cliente', clientesController::class);
-
+//Ajax crud 
+Route::resource('crudjs', jsController::class);
 
 
 //Socialite
@@ -100,6 +97,4 @@ Route::get('login/github/callback', [LoginController::class, 'handleGithubCallba
 Route::get('login/facebook', [App\Http\Controllers\Auth\LoginController::class, 'redirectToFacebook'])->name('login.facebook');
 Route::get('login/facebook/callback', [LoginController::class, 'handleFacebookCallback']);
 
-
-//Ajax crud 
-Route::resource('crudjs', jsController::class);
+Auth::routes();

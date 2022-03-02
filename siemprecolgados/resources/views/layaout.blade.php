@@ -88,8 +88,9 @@
          
               
             </div>
-          
-            
+            <div class="navbar-item">
+                @yield('joke')
+            </div>
 
             <div class="navbar-end">
                 <div class="navbar-item">

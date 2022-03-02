@@ -38,10 +38,25 @@ class PruebasTest extends TestCase
         $adm = User::get()->first();
         $this->actingAs($adm)->get('/')->assertStatus(200);
     }
+    public function test_entraAdmin_Cliente()
+    {
+        $adm = User::get()->first();
+        $this->actingAs($adm)->get('clientes')->assertStatus(200);
+    }
     //entramos con ope
     public function test_entraOperario()
     {
         $ope = User::get()->skip(1)->first();
         $this->actingAs($ope)->get('/')->assertStatus(200);
+    }
+    public function test_entraOperario_TareasOpe()
+    {
+        $ope = User::get()->skip(1)->first();
+        $this->actingAs($ope)->get('tareasOpe')->assertStatus(200);
+    }
+    public function test_entraOperario_TareasOpe_Edit()
+    {
+        $ope = User::get()->skip(1)->first();
+        $this->actingAs($ope)->get('tareasOpe/1/edit')->assertStatus(200);
     }
 }

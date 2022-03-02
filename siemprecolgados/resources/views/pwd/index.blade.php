@@ -10,10 +10,11 @@
                 @csrf
                 @method('put')
                 <label class="label">Nuevo correo</label>
-        <input type="text" class="input" value="{{Auth::user()->email}}" placeholder="Inserte el nuevo correo" name="correo" style="text-align: center"><br><br>
+        <input type="text" class="input" value="{{Auth::user()->email}}" placeholder="Inserte el nuevo correo" name="correo" style="text-align: center">
         @error('correo')
         <span class="tag is-danger is-light">{{$message}}</span>
         @enderror
+        <br><br>
         <label class="label">Nueva contraseña</label>
         <input type="text" class="input" value="" name="password" placeholder="Inserte la nueva contraseña"  style="text-align: center">
         @error('password')
