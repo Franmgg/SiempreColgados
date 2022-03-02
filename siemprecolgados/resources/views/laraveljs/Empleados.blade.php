@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -69,6 +68,6 @@
     </div>
     @include('laraveljs/modal')
     @include('laraveljs/script')
-</body>
 
-</html>
+{{-- No le he puesto mi estilo de bulma por el hecho de que bootstrap usa un js <- expecifico para los modales, 
+    entonces como bulma usa otro y era mucho mas jodido --}}
