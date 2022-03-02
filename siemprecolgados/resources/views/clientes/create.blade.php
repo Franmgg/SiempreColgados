@@ -39,7 +39,7 @@
                             @endforeach      
                             </select><br><br>
                             <hr>
-                            <button type="submit" class="button">Volver</button>
+                            <a href="{{ URL::previous() }}" class="button">Volver</a>
                             <button type="submit" class="button is-primary">Añadir</button>
                         </div>
                     </div>

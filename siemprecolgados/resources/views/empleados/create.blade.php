@@ -25,7 +25,7 @@
                             <label class="label">Confirma la contraseña</label>
                             <input id="password-confirm" type="password" class="input" name="password_confirmation" required autocomplete="new-password">
                             <hr>
-                            <button type="submit" class="button">Volver</button>
+                            <a href="{{ URL::previous() }}" class="button">Volver</a>
                             <button type="submit" class="button is-primary">Añadir</button>
                         </div>
                     </div>

@@ -17,8 +17,6 @@ class cuotaController extends Controller
      */
     public function index()
     {
-
-        
         return view('cuotas.index', [
             'cuotas' => Cuotas::orderBy('id', 'desc')->paginate(4)
         ]);
@@ -70,9 +68,9 @@ class cuotaController extends Controller
      */
     public function show($id)
     {
-        $cuotas = Cuotas::where('cliente_id',$id)->first();
+        $cuotas = Cuotas::where('id',$id)->first();
         $cliente = new Clientes;
-        $c=$cliente::find($id);
+        $c=$cliente::find($cuotas->cliente_id);
         $pdf=new PDFController;
         return  $pdf::verPDF($c,$cuotas);
     }

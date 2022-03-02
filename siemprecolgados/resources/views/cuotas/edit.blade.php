@@ -10,7 +10,7 @@
                 <form action="{{ route('cuotas.update',$cuota->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('put')
-                    <h1 class="title is-3 ">Crear Cuotas</h1>
+                    <h1 class="title is-3 ">Modificar Cuotas</h1>
                     <div class="columns">
                         <div class="column">
                             <label class="label">Concepto</label>
@@ -32,7 +32,7 @@
                             <label class="label">Cliente_id</label>
                             <input type="text" value="{{ old('cliente_id', $cuota->cliente_id) }}" name="cliente_id" placeholder="Cliente id" class="input"><br>
                             <hr>
-                            <button type="submit" class="button">Volver</button>
+                            <a href="{{ URL::previous() }}" class="button">Volver</a>
                             <button type="submit" class="button is-primary">Modificar</button>
                         </div>
                     </div>

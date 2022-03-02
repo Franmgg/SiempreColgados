@@ -27,7 +27,7 @@
                             <label class="label">email</label>
                             <input type="text" value="{{ old('email', $empleado->email) }}" name="email" placeholder="Correo" class="input"><br>
                             <hr>
-                            <button type="submit" class="button">Volver</button>
+                            <a href="{{ URL::previous() }}" class="button">Volver</a>
                             <button type="submit" class="button is-primary">Modificar</button>
                         </div>
                     </div>

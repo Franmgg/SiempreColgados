@@ -73,11 +73,11 @@
   </div>
 </div>
 <div class="column is-one-fifth ml-6 is-flex  is-align-content-center">
-    <div class="card">
-        <div class="card-content">
-           <p class="title is-3">GitHub del creador</p>
-        </div>
-        <div class="card-content">
+  <div class="card">
+      <div class="card-content">
+         <p class="title is-3">GitHub del creador</p>
+      </div>
+      <div class="card-content">
 <div class="github-widget" data-username="Franmgg"></div>
 <script src="https://unpkg.com/github-card@1.2.1/dist/widget.js"></script>
 </div>

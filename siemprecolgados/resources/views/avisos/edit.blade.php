@@ -37,7 +37,7 @@
                         </select>
                         </div>
                         <hr>
-                        <button type="submit" class="button">Volver</button>
+                        <a href="{{ URL::previous() }}" class="button">Volver</a>
                         <button type="submit" class="button is-primary">Modificar</button>
                     </div>
                 </div>

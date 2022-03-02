@@ -45,7 +45,8 @@
                             <label class="label">Fichero</label>
                             <input type="text" value="" name="fichero" placeholder="fichero" class="input"><br>
                             <hr>
-                            <button type="submit" class="button is-primary">Añadir</button>
+                            <a href="{{ URL::previous() }}" class="button">volver</a>
+                            <button type="submit" class="button is-primary">Añadir</button>   
                         </div>
                     </div>
                 </form>

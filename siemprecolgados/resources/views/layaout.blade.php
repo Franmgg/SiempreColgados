@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -83,15 +83,12 @@
                     </div>
                     @endif
                     @endif
-                   
+                  
                 </div>
-         
-              
-            </div>
-            <div class="navbar-item">
+            </div>  
+            <div class="navbar-item ">
                 @yield('joke')
             </div>
-
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="field is-grouped ">

@@ -37,7 +37,7 @@
                         @foreach ($cuotas as $cuota)
                             <tr>
                                 <td>{{ $cuota->concepto }}</td>
-                                <td>{{ $cuota->fecha_emision }}</td>
+                                <td>{{date('j F, Y', strtotime( $cuota->fecha_emision)) }}</td>
                                 <td>{{ $cuota->importe}}</td>
                                 <td>@if($cuota->pagada==0)No @else Si @endif</td>
                                 <td>{{ $cuota->fecha_pago }}</td>
@@ -48,7 +48,7 @@
                                         <a class="button is-warning"
                                             href="{{ route('cuotas.edit', $cuota->id) }}">Editar</a>
                                             <a class="button is-info"
-                                            href="{{ route('cuotas.show', $cuota->cliente_id) }}" target="_blank">Ver PDF</a>
+                                            href="{{ route('cuotas.show', $cuota->id) }}" target="_blank">Ver PDF</a>
                                         @csrf
                                         @method('DELETE')
                                         <button class="button is-danger"

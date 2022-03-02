@@ -98,12 +98,12 @@ class tareasOpeController extends Controller
         if($request->has('check'))$check=1;
         $p = Paises::where('nombre',$request->pais)->get();
         $tareas = Tareas::find($id);
-        $tareas->nombre = $request->nombre;
-        $tareas->cif = $request->cif;
-        $tareas->pais = $p[0]->id;
-        $tareas->correo = $request->correo;
-        $tareas->telefono = $request->telefono;
-        $tareas->cuenta_corriente = $request->cuenta_corriente;
+        // $tareas->nombre = $request->nombre;
+        // $tareas->cif = $request->cif;
+        // $tareas->pais = $p[0]->id;
+        // $tareas->correo = $request->correo;
+        // $tareas->telefono = $request->telefono;
+        // $tareas->cuenta_corriente = $request->cuenta_corriente;
         $tareas->descripcion = $request->descripcion;
         $tareas->terminada = $check ?? null;
         $tareas->save();
