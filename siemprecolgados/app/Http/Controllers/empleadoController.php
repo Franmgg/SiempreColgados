@@ -43,6 +43,13 @@ class empleadoController extends Controller
         $data['email']=$request->email;
         $data['password']=$request->password;
 
+        $request->validate([
+            'name' => 'required',
+            'telefono' => 'required',
+            'email' => 'required|email',
+            'privilege' => 'required'   
+        ]);
+
             User::create([
             'name' => $data['name'],
             'telefono' => $data['telefono'],
@@ -85,6 +92,13 @@ class empleadoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'telefono' => 'required',
+            'email' => 'required|email',
+            'privilege' => 'required'   
+        ]);
+
         $empleados = User::find($id);
         $empleados->name = $request->name;
         $empleados->password;
