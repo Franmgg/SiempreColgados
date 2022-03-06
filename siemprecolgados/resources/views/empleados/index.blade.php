@@ -19,6 +19,7 @@
                             <th>telefono</th>
                             <th>correo</th>
                             <th>Tipo</th>
+                            <th>Fecha</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>

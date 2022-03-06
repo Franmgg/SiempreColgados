@@ -1,5 +1,4 @@
 <script>
-   
     $('#laravel_crud').DataTable();
 
     function addPost() {
@@ -8,7 +7,7 @@
     }
 
     function editPost(event) {
-        
+
         var id = $(event).data("id");
         let _url = `/crudjs/${id}`;
         $.ajax({
@@ -38,14 +37,35 @@
         let _url = `/crudjs`;
         let _token = $('meta[name="csrf-token"]').attr('content');
 
+        todoOK = true;
+        reglaEmail = /^([\da-z_.-]+)@([\da-z.-]+).([a-z.]{2,6})$/
+        if (!reglaEmail.exec(correo)) {
+            todoOK = false;
+             $('#correoError').text('Email no valido');
+        }
+        if (dni === '') {
+            todoOK = false;
+            $('#dniError').text('Completa el campo DNI');
+        }
+
+        if (!isNaN(nombre) || nombre === '') {
+            todoOK = false;
+              $('#nombreError').text('Nombre no valido');
+        }
+
+        if (isNaN(telefono)|| telefono === '') {
+            todoOK = false;
+        $('#telefonoError').text(' Revisa en numero de telefono');
+        }
+        if(todoOK){
         $.ajax({
             url: _url,
             type: "POST",
             data: {
-                id:id,
-                nombre:  $('#nombre').val(),
-                correo:$('#correo').val(),
-                dni:$('#dni').val(),
+                id: id,
+                nombre: $('#nombre').val(),
+                correo: $('#correo').val(),
+                dni: $('#dni').val(),
                 telefono: $('#telefono').val(),
                 _token: _token
             },
@@ -57,12 +77,14 @@
                         $("#row_" + id + " td:nth-child(3)").html(response.data.correo);
                         $("#row_" + id + " td:nth-child(4)").html(response.data.telefono);
                     } else {
-                        $('table tbody').prepend('<tr id="row_' + response.data.id + '"><td>' + response.data.nombre + '</td><td>' + response.data.dni + '</td><td>' + 
-                        response.data.correo +  '</td><td>' + response.data.telefono + '</td><td>' +'<a href="javascript:void(0)" data-id="' + response.data.id +
+                        $('table tbody').prepend('<tr id="row_' + response.data.id + '"><td>' + response
+                            .data.nombre + '</td><td>' + response.data.dni + '</td><td>' +
+                            response.data.correo + '</td><td>' + response.data.telefono + '</td><td>' +
+                            '<a href="javascript:void(0)" data-id="' + response.data.id +
                             '" onclick="editPost(event.target)" class="btn btn-info">Edit</a><a href="javascript:void(0)" data-id="' +
                             response.data.id +
                             '" class="btn btn-danger" onclick="deletePost(event.target)">Delete</a></td></tr>'
-                            );
+                        );
                     }
                     $('#nombre').val('');
                     $('#correo').val('');
@@ -71,9 +93,11 @@
                 }
             },
             error: function(response) {
-                
+
             }
+            
         });
+    }
     }
 
     function deletePost(event) {

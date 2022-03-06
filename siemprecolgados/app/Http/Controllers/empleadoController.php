@@ -38,17 +38,19 @@ class empleadoController extends Controller
      */
     public function store(Request $request)
     {
-        $data['name']=$request->name;
-        $data['telefono']=$request->telefono;
-        $data['email']=$request->email;
-        $data['password']=$request->password;
-
+        
         $request->validate([
             'name' => 'required',
             'telefono' => 'required',
             'email' => 'required|email',
             'privilege' => 'required'   
         ]);
+
+        $data['name']=$request->name;
+        $data['telefono']=$request->telefono;
+        $data['email']=$request->email;
+        $data['password']=$request->password;
+        $data['privilege']=$request->password;
 
             User::create([
             'name' => $data['name'],

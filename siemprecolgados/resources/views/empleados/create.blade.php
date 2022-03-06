@@ -24,6 +24,13 @@
                             <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="new-password">
                             <label class="label">Confirma la contraseña</label>
                             <input id="password-confirm" type="password" class="input" name="password_confirmation" required autocomplete="new-password">
+                            <label class="label">Privilegio</label>
+                            <div class="select">
+                            <select name="privilege" >
+                                <option value="1">Admin</option>
+                                <option value="0">Operario</option>
+                              </select>
+                            </div>
                             <hr>
                             <a href="{{ URL::previous() }}" class="button">Volver</a>
                             <button type="submit" class="button is-primary">Añadir</button>
