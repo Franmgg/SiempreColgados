@@ -84,13 +84,8 @@ class tareasOpeController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nombre' => 'required',
-            'correo' => 'required|email',
-            'pais' => 'required',
-            'cif' => 'required',
-            'telefono' => 'required',
-            'cuenta_corriente' => 'required',
-            'descripcion' => 'required',
+
+            'descripcion' => 'required'
         ]);
 
 

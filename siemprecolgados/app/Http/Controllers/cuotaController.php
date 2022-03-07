@@ -47,7 +47,7 @@ class cuotaController extends Controller
         $cliente = new Clientes;
         $c=$cliente::find($request->cliente_id);
         $email = new SendEmailController($request);
-        $email->sendEmail($c->correo,$request);
+        $email->sendEmail($c,$request);
         $cuotas->concepto = $request->concepto;
         $cuotas->fecha_emision = $request->fecha_emision;
         $cuotas->importe = $request->importe;

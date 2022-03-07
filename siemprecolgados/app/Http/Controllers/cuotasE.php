@@ -41,12 +41,13 @@ class cuotasE extends Controller
      */
     public function store(Request $request)
     {
+
         $cliente = new Clientes;
         $c = $cliente->all();
         foreach($c as $clientes){  
             $cuotas = new Cuotas;
-             $email = new SendEmailController($request);
-             $email->sendEmail($clientes->correo,$request);
+             $email = new SendEmailController();
+             $email->sendEmail($clientes,$request);
              $cuotas->concepto = $request->concepto;
              $cuotas->fecha_emision = $request->fecha_emision;
              $cuotas->importe = $request->importe;
