@@ -41,7 +41,15 @@ class cuotasE extends Controller
      */
     public function store(Request $request)
     {
-
+        $request->validate([
+            'concepto' => 'required',
+            'fecha_emision' => 'required',
+            'importe' => 'required',
+            'pagada' => 'required',
+            'fecha_pago' => 'required',
+            'notas' => 'required',
+            'cliente_id' => 'required'   
+        ]);
         $cliente = new Clientes;
         $c = $cliente->all();
         foreach($c as $clientes){  

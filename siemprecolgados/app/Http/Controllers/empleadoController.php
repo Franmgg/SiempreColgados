@@ -109,7 +109,8 @@ class empleadoController extends Controller
         $empleados->privilege = $request->privilege;
         $empleados->save();
         return redirect()->route('empleados.index')
-            ->with('success', 'Se ha editado satisfactoriamente');
+            ->with('success', 'Se ha editado satisfactoriamente')
+            ->withErrors('errors','Hubo error en la validación');
     }
 
     /**

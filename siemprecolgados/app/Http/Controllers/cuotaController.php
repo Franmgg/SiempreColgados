@@ -95,6 +95,15 @@ class cuotaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'concepto' => 'required',
+            'fecha_emision' => 'required',
+            'fecha_pago' => 'required',
+            'pagada' => 'required',
+            'cliente_id' => 'required',
+            'notas' => 'required',
+            'importe' => 'required'   
+        ]);
         $cuotas = cuotas::find($id);
         $cuotas->concepto = $request->concepto;
         $cuotas->fecha_emision = $request->fecha_emision;
@@ -105,7 +114,7 @@ class cuotaController extends Controller
         $cuotas->cliente_id = $request->cliente_id;
         $cuotas->save();
         return redirect()->route('cuotas.index')
-            ->with('success', 'Se ha editado satisfactoriamente');
+            ->with('success', 'Se ha editado satisfactoriamente')  ;
     }
 
     /**

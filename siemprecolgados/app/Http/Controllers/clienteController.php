@@ -43,6 +43,15 @@ class clienteController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'cif' => 'required',
+            'telefono' => 'required',
+            'correo' => 'required',
+            'cuenta_corriente' => 'required',
+            'pais' => 'required',
+            'moneda' => 'required'   
+        ]);
         $clientes = new Clientes;
         $clientes->nombre = $request->nombre;
         $clientes->cif = $request->cif;
@@ -88,6 +97,16 @@ class clienteController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'cif' => 'required',
+            'telefono' => 'required',
+            'correo' => 'required',
+            'cuenta_corriente' => 'required',
+            'pais' => 'required',
+            'importe' => 'required',
+            'moneda' => 'required'   
+        ]);
         $clientes = clientes::find($id);
         $clientes->nombre = $request->nombre;
         $clientes->cif = $request->cif;

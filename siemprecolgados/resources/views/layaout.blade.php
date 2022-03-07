@@ -125,8 +125,13 @@
         </div>
     </nav>
     @if(session('success'))
-<div class="notification is-warning fade" style="text-align: center">
+<div class="notification is-primary fade" style="text-align: center">
    <b> {{session('success')}} </b>
+</div>
+@endif
+@if(session('errors'))
+<div class="notification is-warning fade" style="text-align: center">
+   <b> {{session('errors')->first('descripcion')}} </b>
 </div>
 @endif
     @yield('cuerpo')

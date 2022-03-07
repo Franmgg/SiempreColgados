@@ -54,9 +54,4 @@ class PruebasTest extends TestCase
         $ope = User::get()->skip(1)->first();
         $this->actingAs($ope)->get('tareasOpe')->assertStatus(200);
     }
-    public function test_entraOperario_TareasOpe_Edit()
-    {
-        $ope = User::get()->skip(1)->first();
-        $this->actingAs($ope)->get('tareasOpe/1/edit')->assertStatus(200);
-    }
 }
