@@ -38,7 +38,7 @@
                             <label class="label">Cliente_id</label>
                             <select name="cliente_id" id="cliente_id" class="select">
                                 @foreach ( $clientes as $cliente )
-                                <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+                                <option value="{{$cliente->id}}">{{$cliente->nombre}}(  {{$cliente->correo}}  )</option>
                                 @endforeach      
                                 </select><br><br>
                             <hr>
