@@ -50,14 +50,14 @@ class empleadoController extends Controller
         $data['telefono']=$request->telefono;
         $data['email']=$request->email;
         $data['password']=$request->password;
-        $data['privilege']=$request->password;
+        $data['privilege']=$request->privilege;
 
             User::create([
             'name' => $data['name'],
             'telefono' => $data['telefono'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'privilege'=> 1,
+            'privilege'=>  $data['privilege'],
         ]);
         return redirect()->route('empleados.index')
             ->with('success', 'Se ha editado satisfactoriamente');
