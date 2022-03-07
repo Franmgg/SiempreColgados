@@ -131,7 +131,7 @@
 @endif
 @if(session('errors'))
 <div class="notification is-warning fade" style="text-align: center">
-   <b> {{session('errors')->first('descripcion')}} </b>
+   <b> Hubo un fallo </b>
 </div>
 @endif
     @yield('cuerpo')
